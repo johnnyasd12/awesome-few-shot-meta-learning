@@ -1,6 +1,8 @@
 A Survey on Few-Shot Learning
 =
 
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=default"></script>
+
 論文名稱：Generalizing from a Few Examples: A Survey on Few-Shot Learning. arXiv 2019
 
 [TOC]
