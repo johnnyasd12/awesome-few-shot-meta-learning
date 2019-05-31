@@ -45,7 +45,7 @@ FSL(few-shot learning) 其中一個效用是能夠幫助我們減少一些 appli
 
 (如果說 machine learning 是 deal with input ) 
 - 對於一個 supervised learning task $T$, FSL deals with $D = \{D^{train}, D^{test}\}$，個人理解 $D$ 就是 few-shot learning 要處理的 **一筆資料**
-- $D^{train} = \{(x^{(i)}, y^{(i)})\}_{i=1}^I$ where $I$ is small
+- $$D^{train} = \{(x^{(i)}, y^{(i)})\}_{i=1}^I$$ where $$I$$ is small
 - 一般會考慮 **$N$-way-$K$-shot classification task**
     - 即 $N$ classes，每個 class 有 $K$ examples
     - 此時 $I = KN$
