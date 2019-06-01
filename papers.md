@@ -1,4 +1,4 @@
-Few-shot/Meta Learning Papers
+Awesome Few-shot/Meta Learning Papers
 ===
 
 [TOC]
