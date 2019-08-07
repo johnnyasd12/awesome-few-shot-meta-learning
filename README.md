@@ -257,9 +257,6 @@ Awesome Few-shot / Meta Learning Papers
 - done by **sharing the first several layers** of two networks to learn the generic information, while **learning a different last layer** to deal with different output for each task.
 
 
-## Task Agnostic Meta-Learning for Few-Shot Learning. CVPR’19
-- https://hackmd.io/2e6l5BmYS2ebhE__dwOcgQ?both#Task-Agnostic-Meta-Learning-for-Few-Shot-Learning-CVPR%E2%80%99191
-
 ## Delta-encoder: an effective sample synthesis method for few-shot object recognition. NIPS 2018
 - Data method: learned transformation
 
