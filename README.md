@@ -1,9 +1,146 @@
-Awesome Few-shot/Meta Learning Papers
+Awesome Few-shot / Meta Learning Papers
 ===
+
+
+# Content
 
 [TOC]
 
+# [My paper note: A Survey on Few-shot Learning](https://hackmd.io/_T-1A6nhQyG_LxTI2phQvw)
+
+# Classic
+
+## Legacy Papers
+- [awesome meta learning](https://github.com/floodsung/Meta-Learning-Papers)
+
+## Siamese neural networks for one-shot image recognition. 2015
+
+## FaceNet: A Unified Embedding for Face Recognition and Clustering. CVPR 2015
+
+## Hypernetworks. ICLR 2017
+
+## (SNAIL) A Simple Neural Attentive Meta-Learner. ICLR 2018
+- episodic training
+- [code (PyTorch)](https://github.com/eambutu/snail-pytorch)
+- [code (PyTorch) - 2](https://github.com/sagelywizard/snail)
+- [code (MXNet? Gluon)](https://github.com/seujung/SNAIL-gluon)
+- [my paper note (unfinished)](https://hackmd.io/rYWjR821QpWFjWPdqZzCqw)
+
+
+## Meta-learning with memory-augmented neural networks. ICML 2016
+- **最早用 external memory 解 FSL classification** 的
+- [my paper note](https://hackmd.io/OuVnw8WuT7OAuttmNtFtvg)
+
+### Abstract
+- Architectures with **augmented memory** capacities, such as Neural Turing Machines (NTMs), offer the ability to **quickly encode and retrieve new information**, and hence can potentially obviate the *downsides of conventional models*.
+    - When new data is encountered, the **conventional models must inefficiently relearn their parameters** to adequately incorporate the new information without catastrophic interference.
+- We also introduce a **new method for accessing an external memory that focuses on memory content**, unlike previous methods that additionally use memory location-based focusing mechanisms.
+
+## Model-Agnostic Meta-Learning for Fast Adaptation of Deep Networks. ICML 2017
+![](https://i.imgur.com/vtN6Wso.png)
+- 上圖演算法 **重要**，李老師教的版本有點簡化了
+- [code - official? (TF)](https://github.com/cbfinn/maml)
+- [code - PyTorch](https://github.com/dragen1860/MAML-Pytorch)
+- [我的 NTU lecture 筆記](https://johnnyasd12.gitbooks.io/machine-learning-ntu/content/2019-meta-learning.html) [[edit](https://legacy.gitbook.com/book/johnnyasd12/machine-learning-ntu/edit#/edit/master/2019-meta-learning.md?_k=710c5j)]
+- [中文1](https://zhuanlan.zhihu.com/p/57864886)
+- [中文2](https://zhuanlan.zhihu.com/p/40417018)
+    - 第一次 update 參數得到 $\theta_t'$ 時，使用 support set；而真正要更新 $\theta$ 時，是使用 query set 得到的 loss
+- episodic training
+- 任何使用 gradient descent 的模型都適用本方法
+- 尋找一個模型的 initialize parameter
+
+
+## Reptile: A Scalable Meta-Learning Algorithm. 2018
+- episodic training
+
+## Matching Networks for One Shot Learning. NIPS'16
+![](https://i.imgur.com/yjy0v5S.png)
+- [Andrej Karpathy note](https://github.com/karpathy/paper-notes/blob/master/matching_networks.md)
+- [我的筆記](https://hackmd.io/s3jGbRDmSTWXmZKIg_ExHQ)
+- [code (TF)](https://github.com/AntreasAntoniou/MatchingNetworks)
+- [code (PyTorch)](https://github.com/BoyuanJiang/matching-networks-pytorch)
+- [code (TF) - 2](https://github.com/markdtw/matching-networks)
+- [code (Keras)](https://github.com/cnichkawde/MatchingNetwork)
+- **第一個提出 episodic training**
+- 第一個提出 **mini-ImageNet**
+    - 6
+- attention、memory network(multi-hopping)
+- 和 Siamese Network 不同的是：**Siamese Network 只學習一個 distance(或 similarity function)；而 Matching Network 直接 end-to-end 學習一個 nearest neighbor classifier**
+- 使用 cosine similarity 作為 metric
+
+
+
+## Prototypical Networks for Few-shot Learning. NIPS'17
+
+- [code - official (PyTorch)](https://github.com/jakesnell/prototypical-networks)
+- [code - official? (PyTorch)](https://github.com/orobix/Prototypical-Networks-for-Few-shot-Learning-PyTorch)
+- [code (PyTorch)](https://github.com/cyvius96/prototypical-network-pytorch)
+- episodic training
+- [my paper note](https://hackmd.io/Oc2fQyxCS-SdGMpu3U3QRw)
+- Since there is very few data available, a classifier should have a **simple inductive bias** 這句應該是出自這篇吧
+
+## Optimization as a model for fewshot learning. ICLR 2017
+- LSTM-based meta learning
+
+## TADAM: Task dependent adaptive metric for improved few-shot learning. NIPS 2018
+- [code - official (TF)](https://github.com/ElementAI/TADAM)
+- 借鑑 ProtoNet 思想
+- metric scaling
+    - 學習一個 scaling factor $\alpha$，這樣可更好的輸出 metric 大小在合適的範圍
+- task conditioning
+    - 利用 prototype 的平均值構造 task representation，然後利用 task representation 來改變 feature extractor 的 function，即具有 adaptation 的能力
+- auxiliary task co-training
+    - 也把所有 training data 用來訓練 feature extractor，做為輔助的 task 一起 train，能讓 feature 更 generalize
+
+## Learning to Compare: Relation Network for Few-Shot Learning. CVPR'18
+![](https://i.imgur.com/6IyzPBW.png)
+- [中文](https://zhuanlan.zhihu.com/p/35379027)
+- [code - official (PyTorch fewshot)](https://github.com/floodsung/LearningToCompare_FSL)
+- [code - official (PyTorch zeroshot)](https://github.com/lzrobots/LearningToCompare_ZSL)
+- [code (PyTorch)](https://github.com/dragen1860/LearningToCompare-Pytorch)
+- episodic training
+- 將 support set 和 query 的 embedding 做 concat，然後用 NN 計算相似程度。
+- 同樣的 architecture **也可以用來做 ZSL**，只要把 support set 換成 class semantic vector 即可
+
+## Meta-Learning with Latent Embedding Optimization. ICLR'19
+![](https://i.imgur.com/g2oJbf2.png)
+- [code - official (TF)](https://github.com/deepmind/leo)
+- SOTA: LEO
+- 解決 MAML 不能很好的處理 high dim 的 data，即使 deeper network 也不好
+- 用 (encoder+relation net) 對 data 做 latent code，然後 decode 出 w，再用 w 去算 loss 對 z 做 MAML，(**最後得到的 w' 跟 x 做 內積完 softmax??**
+- OpenReview:
+    - contributions 有二：(1)本來 MAML 是固定 init params，現在他們把他變成低維 latent space。(2)依據 subproblem 的 input data 來決定 init params
+
+
+## Dynamic few-shot visual learning without forgetting. CVPR'18
+- SOTA
+- reduce intra-class variance 的重要性
+
+## Rapid adaptation with conditionally shifted neurons. ICML 2018
+- SOTA: AdaResNet
+
+
 # Few-shot with Domain shift
+
+## [最前沿：General Meta Learning](https://zhuanlan.zhihu.com/p/70782949)
+
+## Revisiting Metric Learning for Few-Shot Image Classification. arXiv 1907
+- evaluate 在完全不同的 dataset 上
+
+## Label Efficient Learning of Transferable Representations across Domains and Tasks. NIPS 2017 (Li Fei-Fei)
+
+### Abstract
+- Our model is simultaneously optimized on **labeled source data and unlabeled or sparsely labeled data in the target domain**.
+- Our method shows compelling results on **novel classes within a new domain** even when **only a few labeled examples per class** are available, outperforming the prevalent fine-tuning approach.
+
+## Learning to generalize: Meta-learning for domain generalization, AAAI 18
+
+## Consensus Adversarial Domain Adaptation. AAAI 19
+- few-shot domain adaptation scheme (F-CADA)
+
+
+## d-SNE: Domain Adaptation using Stochastic Neighborhood Embedding. CVPR'19
+- supervised domain adaptation with few labeled data
 
 ## One Shot Domain Adaptation for Person Re-Identification. 2018
 
@@ -20,11 +157,14 @@ Awesome Few-shot/Meta Learning Papers
 - [My paper note](https://hackmd.io/8H_J9XauQgWrGfkLz88dKQ?view)
 - supervised domain adaptation
 - 並不真的 focus 在 few-shot learning
+<!--
 - 先在 source target 上 pre-train 一個 variational auto-encoder(VAE)，複製給 target task。兩個 task share 一些 layer，target task 只能 update task-specific layer；source task 可以 update shared 跟 他自己的 task-specific layer
+-->
 
 ## Transferable meta learning across domains. UAI 2018
 - 似乎用到 target domain 的 unlabeled data
-- 這篇也跟樓上一樣不是真的在做 few-shot
+- MAML + DANN?
+- 這篇也跟樓上一樣不是真的在做 few-shot，**source 跟 target 是相同 label space**
 - [my paper note](https://hackmd.io/yh6uPnEwQzOfuvYOynB06Q)
 
 ### Abstract
@@ -34,15 +174,17 @@ Awesome Few-shot/Meta Learning Papers
 
 ## Learning Embedding Adaptation for Few-Shot Learning. arXiv 1812
 - [code - official (PyTorch)](https://github.com/Sha-Lab/FEAT)
+- [中文](https://blog.csdn.net/xnmc2014/article/details/89925636)
 - transformer + ProtoNets?
 - SOTA: EA-FSL / FEAT
-- 似乎沒用到 target task 的 data
+- 實驗也有做 cross-domain，但是也一樣，source 和 target 的 label space 相同
+- 似乎沒用到 target task 的 data?
 - [my paper note](https://hackmd.io/DIpAhhCjQuSErytQoTkUog)
 
 ## Domain adaption in one-shot learning. ECML-PKDD 2018
 
 - title 的字並沒有打錯ㄛ
-- 似乎需要 target domain labeled data
+- 需要 target domain **unlabeled** data
 - [My paper note](https://hackmd.io/VqkHvFGIToqGWsfSwLg6bA?view)
 - [code - official (TF)](https://github.com/leonndong/DAOSL)
 ### Abstract
@@ -63,7 +205,7 @@ Awesome Few-shot/Meta Learning Papers
 - 特別強調 SOTA 在 domain adaptation 做得不好
 
 ### Reviewer Comment
-- The conclusion from the network depth experiments is that “**gaps among different methods diminish as the backbone gets deeper**”. However, in a **5-shot mini-ImageNet case, this is not what the plot shows**. Quite the opposite: the gap increased. Did I misunderstand something? Could you please comment on that?
+- The conclusion from the network depth experiments is that “**gaps among different methods diminish as the backbone gets deeper**”. However, in a **5-shot mini-ImageNet case, this is not what the plot shows**. Quite the opposite: the **gap increased**. Did I misunderstand something? Could you please comment on that?
     - **跟我想問的問題一樣**
     - Authors' Answer: Sorry for the confusion. As addressed in 4.3, gaps among different methods diminish as the backbone gets deeper *in the CUB dataset*. In the mini-ImageNet dataset, the results are more complicated due to the domain difference. We further discuss this phenomenon in Section 4.4 and 4.5. We have clarified related texts in the revised paper. 
 
@@ -81,8 +223,20 @@ Awesome Few-shot/Meta Learning Papers
 
 ## Subspace Networks for Few-shot Classification. arXiv 1905.13613
 
+![](https://i.imgur.com/CyAqlrn.png)
+- follow "A Closer Look at Few-shot Classification" 的設定
+- 根據 embedded query point 到每個 class **subspace 的距離**來 classify example
 
 # 優先
+
+## Human-level concept learning through probabilistic program induction.
+
+- (No Deep Learning, but worth reading)
+
+## Generalized Zero- and Few-Shot Learning via Aligned Variational Autoencoders. CVPR'19
+
+- [code - official (PyTorch)](https://github.com/edgarschnfld/CADA-VAE-PyTorch)
+
 
 ## Adaptive Cross-Modal Few-Shot Learning, ICLR 2019 Workshop LLD, arXiv 1902
 - 這篇跟我本來想到的 idea 一樣，居然有人做過了，機車
@@ -90,12 +244,14 @@ Awesome Few-shot/Meta Learning Papers
 - 對，他沒做 domain shift 哈哈哈哈
 
 ### Reviewer Comment
-- this paper is not really doing few-shot learning, because according to section 3.2. and the experiments, the authors use the test labels in order to know which word embeddings to assign to each sample: "[...] containing label embeddings of all categories in D_train ∪ D_test". In other words, the authors use the labels (which are the goal of the classification task) to find the match between the two input modalities (to know what Glove vector to assign to each image).
+- this paper is **not really doing few-shot learning**, because according to section 3.2. and the experiments, the authors use the test labels in order to know which word embeddings to assign to each sample: "[...] containing label embeddings of all categories in D_train ∪ D_test". In other words, the authors use the labels (which are the goal of the classification task) to find the match between the two input modalities (to know what Glove vector to assign to each image).
 - the experiments compare the results only between this multimodal approach and visual approaches. I believe using the Glove embeddings alone (no visual input) could give very good results on their own, and it is thus crucial for the authors to compare with this scenario too.
 - the explanation for why you chose this form for lambda_c is unclear: "A very structured semantic space is a good choice for conditioning." 
 
 ## Label efficient learning of transferable representations across domains and tasks. NIPS 2017
 - initialize the CNN for the target tasks in the target domain by a **pre-trained CNN learning from source tasks** in source domain. During training, they use an **adversarial loss** calculated from **representations in multiple layers** of CNN to force the two CNNs projects samples to a **task-invariant space**.
+
+
 
 ## Fine-grained visual categorization using meta-learning optimization with sample selection of auxiliary data. ECCV 2018
 - done by **sharing the first several layers** of two networks to learn the generic information, while **learning a different last layer** to deal with different output for each task.
@@ -124,101 +280,6 @@ Awesome Few-shot/Meta Learning Papers
 - 这篇论文解释了单样本学习与元学习的关系
 
 
-# Classic
-
-## Siamese neural networks for one-shot image recognition. 2015
-
-## Hypernetworks. ICLR 2017
-
-## (SNAIL) A Simple Neural Attentive Meta-Learner. ICLR 2018
-- episodic training
-- [code (PyTorch)](https://github.com/eambutu/snail-pytorch)
-- [code (PyTorch) - 2](https://github.com/sagelywizard/snail)
-- [code (MXNet? Gluon)](https://github.com/seujung/SNAIL-gluon)
-- [my paper note (unfinished)](https://hackmd.io/rYWjR821QpWFjWPdqZzCqw)
-
-
-## Soft k-Means
-
-## Meta-learning with memory-augmented neural networks. ICML 2016
-- **最早用 external memory 解 FSL classification** 的
-- [my paper note](https://hackmd.io/OuVnw8WuT7OAuttmNtFtvg)
-
-### Abstract
-- Architectures with **augmented memory** capacities, such as Neural Turing Machines (NTMs), offer the ability to **quickly encode and retrieve new information**, and hence can potentially obviate the *downsides of conventional models*.
-    - When new data is encountered, the **conventional models must inefficiently relearn their parameters** to adequately incorporate the new information without catastrophic interference.
-- We also introduce a **new method for accessing an external memory that focuses on memory content**, unlike previous methods that additionally use memory location-based focusing mechanisms.
-
-## Model-Agnostic Meta-Learning for Fast Adaptation of Deep Networks. ICML 2017
-![](https://i.imgur.com/vtN6Wso.png)
-- 上圖演算法 **重要**，李老師教的版本有點簡化了
-- [code - official? (TF)](https://github.com/cbfinn/maml)
-- [code - PyTorch](https://github.com/dragen1860/MAML-Pytorch)
-- [我的 NTU lecture 筆記](https://johnnyasd12.gitbooks.io/machine-learning-ntu/content/2019-meta-learning.html) [[edit](https://legacy.gitbook.com/book/johnnyasd12/machine-learning-ntu/edit#/edit/master/2019-meta-learning.md?_k=710c5j)]
-- [中文1](https://zhuanlan.zhihu.com/p/57864886)
-- [中文2](https://zhuanlan.zhihu.com/p/40417018)
-    - 第一次 update 參數得到 $\theta_t'$ 時，使用 support set；而真正要更新 $\theta$ 時，是使用 query set 得到的 loss- episodic training
-- 又稱 MAML
-- 任何使用 gradient descent 的模型都適用本方法
-- 尋找一個模型的 initialize parameter
-
-
-## Reptile: A Scalable Meta-Learning Algorithm. 2018
-- episodic training
-
-## Matching Networks for One Shot Learning. NIPS'16
-![](https://i.imgur.com/yjy0v5S.png)
-- [Andrej Karpathy note](https://github.com/karpathy/paper-notes/blob/master/matching_networks.md)
-- [我的筆記](https://hackmd.io/s3jGbRDmSTWXmZKIg_ExHQ)
-- [code (TF)](https://github.com/AntreasAntoniou/MatchingNetworks)
-- [code (PyTorch)](https://github.com/BoyuanJiang/matching-networks-pytorch)
-- [code (TF) - 2](https://github.com/markdtw/matching-networks)
-- [code (Keras)](https://github.com/cnichkawde/MatchingNetwork)
-- **提出 episodic training**
-- attention、memory network(multi-hopping)
-- 和 Siamese Network 不同的是：**Siamese Network 只學習一個 distance(或 similarity function)；而 Matching Network 直接 end-to-end 學習一個 nearest neighbor classifier**
-- 使用 cosine similarity 作為 metric?
-
-
-
-## Prototypical Networks for Few-shot Learning. NIPS'17
-
-- [code - official (PyTorch)](https://github.com/jakesnell/prototypical-networks)
-- [code - official? (PyTorch)](https://github.com/orobix/Prototypical-Networks-for-Few-shot-Learning-PyTorch)
-- [code (PyTorch)](https://github.com/cyvius96/prototypical-network-pytorch)
-- episodic training
-- [my paper note](https://hackmd.io/Oc2fQyxCS-SdGMpu3U3QRw)
-
-## Optimization as a model for fewshot learning. ICLR 2017
-- LSTM-based meta learning
-
-## TADAM: Task dependent adaptive metric for improved few-shot learning. NIPS 2018
-- [code - official (TF)](https://github.com/ElementAI/TADAM)
-- 借鑑 ProtoNet 思想
-- metric scaling
-    - 學習一個 scaling factor $\alpha$，這樣可更好的輸出 metric 大小在合適的範圍
-- task conditioning
-    - 利用 prototype 的平均值構造 task representation，然後利用 task representation 來改變 feature extractor 的 function，即具有 adaptation 的能力
-- auxiliary task co-training
-    - 也把所有 training data 用來訓練 feature extractor，做為輔助的 task 一起 train，能讓 feature 更 generalize
-
-## Learning to Compare: Relation Network for Few-Shot Learning. CVPR'18
-![](https://i.imgur.com/6IyzPBW.png)
-- [中文](https://zhuanlan.zhihu.com/p/35379027)
-- [code - official (PyTorch fewshot)](https://github.com/floodsung/LearningToCompare_FSL)
-- [code - official (PyTorch zeroshot)](https://github.com/lzrobots/LearningToCompare_ZSL)
-- [code (PyTorch)](https://github.com/dragen1860/LearningToCompare-Pytorch)
-- episodic training
-- 將 support set 和 query 的 embedding 做 concat，然後用 NN 計算相似程度。
-- 同樣的 architecture **也可以用來做 ZSL**，只要把 support set 換成 class semantic vector 即可
-
-
-## Dynamic few-shot visual learning without forgetting. CVPR'18
-- SOTA
-- reduce intra-class variance 的重要性
-
-## A. Rapid adaptation with conditionally shifted neurons. ICML 2018
-- SOTA: AdaResNet
 
 
 # recommended from other lab
@@ -229,6 +290,20 @@ Awesome Few-shot/Meta Learning Papers
 
 # others
 
+## Baby steps towards few-shot learning with multiple semantics. arXiv 1906
+
+## Few-Shot Learning with Embedded Class Models and Shot-Free Meta Training. arXiv 1905
+- **any-way, any-shot**
+
+## Diversity with Cooperation: Ensemble Methods for Few-Shot Classification. arXiv 1903
+### Abstract
+- 不用 meta-learning，而是用 ensemble DNN 的方式達到 SOTA 效果
+- **even a single network obtained by distillation yields state-of-the-art** results.
+
+## Meta-learning autoencoders for few-shot prediction. arXiv 1807 (MIT)
+
+## Memory Matching Networks for One-Shot Image Recognition. CVPR 2018
+
 ## Learning Classifiers for Target Domain with Limited or No Labels. ICML 19
 - 好像不是做 domain shift 的 @@
 - 分別對 few-shot learning, generalized zero-shot learning, domain adaptation 做了實驗
@@ -238,34 +313,27 @@ Awesome Few-shot/Meta Learning Papers
 - At **test-time** we **freeze the encoder and only learn/adapt the classifier** component to limited annotated labels in FSL; new semantic attributes in ZSL.
 
 
-## One-Shot Unsupervised Cross Domain Translation. NeurIPS 2018
-- few-shot + GAN
-- They learn **separate embedding for source and target tasks in different domains** to map them into a task-invariant space, then learn a **shared classifier** to classify samples from all tasks.
 
 
-
-## Meta-Learning with Latent Embedding Optimization. ICLR'19
-![](https://i.imgur.com/g2oJbf2.png)
-- [code - official (TF)](https://github.com/deepmind/leo)
-- SOTA: LEO
-- 解決 MAML 不能很好的處理 high dim 的 data，即使 deeper network 也不好
-- 用 (encoder+relation net) 對 data 做 latent code，然後 decode 出 w，再用 w 去算 loss 對 z 做 MAML，(**最後得到的 w' 跟 x 做 內積完 softmax??**
-- OpenReview:
-    - contributions 有二：(1)本來 MAML 是固定 init params，現在他們把他變成低維 latent space。(2)依據 subproblem 的 input data 來決定 init params
 ## Meta-Learning Probabilistic Inference for Prediction. ICLR'19
-- [code](https://github.com/Gordonjo/versa)
+- [code - official (TF)](https://github.com/Gordonjo/versa)
 
 ## Meta-Learning for Semi-Supervised Few-Shot Classification. ICLR 2018
+- [code - official (TF)](https://github.com/renmengye/few-shot-ssl-public)
 - 概念跟樓下那篇似乎有點像
+- 和 ProtoNet 同作者
+- SOTA: Soft k-Means
+- 第一個提出 **tiered-imagenet 的 paper**
+    - [tiered-imagenet github (非官方)](https://github.com/y2l/tiered-imagenet-tools)
 
 ## Learning to Propagate Labels: Transductive Propagation Network for Few-shot Learning. ICLR’19
-- 又稱 **TPN**
+- SOTA: **TPN**
 - [中文](https://blog.csdn.net/choose_c/article/details/86560074)
 - [code - official (TF)](https://github.com/csyanbin/TPN)
 - [code - official (PyTorch)](https://github.com/csyanbin/TPN-pytorch)
 - 有點像是結合 meta-learning 跟 semi-supervised learning
     - **將 support set 的 label 在 query set 中傳遞**
-- [My Paper Note(待補完)](https://hackmd.io/HlArvrYZS4S6ksipcvJtaQ)
+- [My Paper Note(unfinished)](https://hackmd.io/HlArvrYZS4S6ksipcvJtaQ)
 
 
 
@@ -303,7 +371,8 @@ Awesome Few-shot/Meta Learning Papers
 # CVPR 2019
 
 ## Meta-Transfer Learning for Few-Shot Learning. CVPR'19
-- [code(TF)](https://github.com/y2l/meta-transfer-learning-tensorflow)
+- [code - reproduced (TF)](https://github.com/y2l/meta-transfer-learning-tensorflow)
+- code - reproduced (PyTorch): under-developed
 - [中文](https://zhuanlan.zhihu.com/p/57134284) (僅佔小部份篇幅)
 - [作者blog](https://blog.yyliu.net/meta-transfer-learning/)
 - 方法 (**改良 MAML**)
@@ -314,24 +383,24 @@ Awesome Few-shot/Meta Learning Papers
 
 
 
-## Transferrable Prototypical Networks for Unsupervised Domain Adaptation. CVPR'19
-
-- 單純做 domain adaptation 而不是 few-shot，只是方法借用 few-shot 的 ProtoNet
-
 ## Adversarial Meta-Adaptation Network for Blending-target Domain Adaptation. CVPR'19
 - 提出了新的 scenario: Blending-target Domain Adaptation (**BTDA**)
 - 提出了 Adversarial Meta-Adaptation Network (**AMEAN**)
 
 ## Instance-Level Meta Normalization. CVPR'19
 
-## Learning to Learn How to Learn: Self-Adaptive Visual Navigation using Meta-Learning. CVPR'19
-- [code - official (PyTorch)](https://github.com/allenai/savn)
-- 用 meta-learning 來學 Visual Navigation task
-## IMAGE DEFORMATION META-NETWORK FOR ONE-SHOT LEARNING. CVPR'19
+
+## Image Deformation Meta-Networks for One-Shot Learning. CVPR'19
+- [code - official (PyTorch)](https://github.com/tankche1/IDeMe-Net)
 
 ## Meta-Learning with Differentiable Convex Optimization. CVPR'19
 
+
 ## Task Agnostic Meta-Learning for Few-Shot Learning. CVPR'19
+- [作者導讀 中文](https://zhuanlan.zhihu.com/p/37076777)
+    - 直接最大化初始模型在不同类别上的熵（Entropy Maximization）来实现对任务的无偏性
+
+
 ### 想讀
 
 ## AutoAugment: Learning Augmentation Strategies from Data. CVPR'19
@@ -339,6 +408,8 @@ Awesome Few-shot/Meta Learning Papers
 ## Divide and Conquer the Embedding Space for Metric Learning. CVPR'19
 
 ## Finding Task-Relevant Features for Few-Shot Learning by Category Traversal. CVPR'19
+- 引用 closerlook
+- 根據 support set 得到一個 channel attention，對所有的 image 做 channel attention
 
 ## Few-Shot Learning via Saliency-guided Hallucination of Samples. CVPR'19
 
@@ -379,7 +450,69 @@ Awesome Few-shot/Meta Learning Papers
 
 ## LGM-Net: Learning to Generate Matching Networks for Few-Shot Learning. ICML'19
 
+### code
+- [code - official (TF)](https://github.com/likesiwell/LGM-Net/)
+
+### Abstract
+-  **no further tuning** steps are required compared to other meta-learning approaches
+
+
+## Fast Context Adaptation via Meta-Learning. ICML'19
+
+### Abstract
+- We propose **CAVIA** for meta-learning, a simple extension to **MAML** that is **less prone to meta-overfitting**, easier to parallelise, and more **interpretable**.
+- CAVIA partitions the model parameters into two parts: **context parameters** that serve as **additional input** to the model and are **adapted on individual tasks**, and **shared parameters** that are meta-trained and **shared across tasks**. At **test time, only the context parameters are updated**, leading to a low-dimensional task representation. 
+
+## A Meta Understanding of Meta-Learning. ICML'19 Workshop (under review)
+- 以 supervised learning 的方式去理解 meta-learning
+
+## Low-shot learning with imprinted weights. CVPR'18
+
+# ICCV 2019?
+
+# ECCV 2018
+
+# AAAI 2019
+
+
+# ~~CVPR 2019 Workshop~~
+
+# NIPS 2019 Workshop
+
+# ICCV 2019 Workshop
+
+# ECCV 2018 Workshop
+
+# ICLR 2019 Workshop LLD
+
+
+
+
+# [ICML 2018 Workshop](https://sites.google.com/site/icml18limitedlabels/accepted-papers)
+
+---
+# not interested currently
+
+
+
+
+
+
+
+## Online Learning of a Memory for Learning Rates. ICRA 2018
+
+## Learning to Learn How to Learn: Self-Adaptive Visual Navigation using Meta-Learning. CVPR'19
+- [code - official (PyTorch)](https://github.com/allenai/savn)
+- 用 meta-learning 來學 Visual Navigation task
+
+## One-Shot Unsupervised Cross Domain Translation. NeurIPS 2018
+- few-shot + GAN
+- They learn **separate embedding for source and target tasks in different domains** to map them into a task-invariant space, then learn a **shared classifier** to classify samples from all tasks.
+
 ## Infinite Mixture Prototypes for Few-shot Learning. ICML'19
+### Abstract
+- Our infinite mixture prototypes **represent each class by a set of clusters**, unlike existing prototypical methods that represent each class by a single cluster. 
+- **semi-supervised and unsupervised** setting
 
 ## Taming MAML: Efficient unbiased meta-reinforcement learning. ICML'19
 
@@ -387,24 +520,23 @@ Awesome Few-shot/Meta Learning Papers
 
 ## Sever: A Robust Meta-Algorithm for Stochastic Optimization. ICML'19
 
-## Fast Context Adaptation via Meta-Learning. ICML'19
-
 ## Probable Guarantees for Gradient-Based Meta-Learning. ICML'19
 
 ## Meta-Learning Neural Bloom Filters. ICML'19
 
+### Abstract
+- We propose a novel **memory** architecture, the **Neural Bloom Filter**, which is able to achieve significant **compression gains** over classical Bloom Filters and existing memory-augmented neural networks
+
 ## Hierarchically Structured Meta-learning. ICML'19
+- focus on **gradient-based meta-learning**
 
 ## Online Meta-Learning. ICML'19
+- MAML 作者
 
-# ECCV 2019?
+## Few-Shot Regression via Learned Basis Functions
 
-# ICCV 2019?
+- propose a few-shot learning model that is tailored specifically for **regression** tasks
 
-# AAAI 2019
-
-
-
-###### tags: `fewshot learning`
+###### tags: `fewshot learning` `awesome few shot learning` `papers`
 
 
