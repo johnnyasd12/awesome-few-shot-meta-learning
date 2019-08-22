@@ -13,6 +13,9 @@ Awesome Few-shot / Meta Learning Papers
 ## Legacy Papers
 - [awesome meta learning](https://github.com/floodsung/Meta-Learning-Papers)
 
+## Deep transfer metric learning. CVPR 2015
+- **reducing intra-class variations of features** has been highlighted in this paper (deeper backbone???)
+
 ## Siamese neural networks for one-shot image recognition. 2015
 
 ## FaceNet: A Unified Embedding for Face Recognition and Clustering. CVPR 2015
@@ -233,6 +236,54 @@ Awesome Few-shot / Meta Learning Papers
 
 - (No Deep Learning, but worth reading)
 
+## Label efficient learning of transferable representations across domains and tasks. NIPS 2017
+- initialize the CNN for the target tasks in the target domain by a **pre-trained CNN learning from source tasks** in source domain. During training, they use an **adversarial loss** calculated from **representations in multiple layers** of CNN to force the two CNNs projects samples to a **task-invariant space**.
+
+
+
+## Fine-grained visual categorization using meta-learning optimization with sample selection of auxiliary data. ECCV 2018
+- done by **sharing the first several layers** of two networks to learn the generic information, while **learning a different last layer** to deal with different output for each task.
+
+
+## Low-shot learning with large-scale diffusion. CVPR 2018
+- Data method: transform other dataset
+
+## One-shot Learning with Memory-Augmented Neural Networks. arXiv'16
+- 这篇论文解释了单样本学习与元学习的关系
+
+# Data Augmentation -based Approach
+
+## Delta-encoder: an effective sample synthesis method for few-shot object recognition. NIPS 2018
+- Data method: learned transformation
+
+### Abstract
+- Our approach is based on a **modified auto-encoder**, denoted delta-encoder, that learns to **synthesize new samples for an unseen category just by seeing few examples** from it. The synthesized samples are then used to train a classifier.
+- proposed approach learns to both **extract transferable intra-class deformations**, or "**deltas**", between same-class pairs of training examples, and to **apply those deltas** to the few provided examples of a **novel class** (unseen during training) in order to efficiently **synthesize samples from that new class**.
+
+### the delta-encoder
+![](https://i.imgur.com/XCGtXRv.png)
+![](https://i.imgur.com/rl5xJtP.png)
+- The simple key idea of this work is to **change the meaning of $E(X)$** from representing the "essence" of $X$, to representing the delta, or **"additional information" needed to reconstruct $X$ from $Y$** (an observed example from the same category).
+    - $E$ for encoder, $D$ for decoder
+
+
+
+## LaSO: Label-Set Operations networks for multi-label few-shot learning. CVPR'19
+
+## Few-Shot Learning via Saliency-guided Hallucination of Samples. CVPR'19
+
+## Spot and Learn: A Maximum-Entropy Image Patch Sampler for Few-Shot Classification. CVPR'19
+
+## Image Deformation Meta-Networks for One-Shot Learning. CVPR'19
+- [code - official (PyTorch)](https://github.com/tankche1/IDeMe-Net)
+
+# Semantic-based Approach
+
+## Large-Scale Few-Shot Learning: Knowledge Transfer with Class Hierarchy. CVPR'19
+
+
+## Baby steps towards few-shot learning with multiple semantics. arXiv 1906
+
 ## Generalized Zero- and Few-Shot Learning via Aligned Variational Autoencoders. CVPR'19
 
 - [code - official (PyTorch)](https://github.com/edgarschnfld/CADA-VAE-PyTorch)
@@ -248,49 +299,29 @@ Awesome Few-shot / Meta Learning Papers
 - the experiments compare the results only between this multimodal approach and visual approaches. I believe using the Glove embeddings alone (no visual input) could give very good results on their own, and it is thus crucial for the authors to compare with this scenario too.
 - the explanation for why you chose this form for lambda_c is unclear: "A very structured semantic space is a good choice for conditioning." 
 
-## Label efficient learning of transferable representations across domains and tasks. NIPS 2017
-- initialize the CNN for the target tasks in the target domain by a **pre-trained CNN learning from source tasks** in source domain. During training, they use an **adversarial loss** calculated from **representations in multiple layers** of CNN to force the two CNNs projects samples to a **task-invariant space**.
+## TAFE-Net: Task-Aware Feature Embeddings for Low Shot Learning. 2019
+
+# others
+
+## Multi-attention Network for One Shot Learning. CVPR 2017
+
+### [few-shot 知乎](https://zhuanlan.zhihu.com/p/58298920)
+
+- motivation：对于一个novel类只给了一个样本，但是给定的图像可能含有其他无关的信息，因此利用一个注意力机制，只关注样本中于目标类别相关的区域。
+- 方法：
+    1. 利用word2vec提取类别的语义信息a，CNN提取图像的视觉信息x。
+    2. 类似self-attention机制，以a作为query，x作为gallery和value，生成多个attention map
+    3. 根据生成的attention map对图像特征加权求和，得到图像的最后特征
+    4. 在训练集上对图像特征分类，训练整个网络
+    5. 测试时，输入一张训练图像和类别得到相应的特征，对测试图像，分别输入多个类别的语义信息，得到多个图像特征，最近邻比对
 
 
-
-## Fine-grained visual categorization using meta-learning optimization with sample selection of auxiliary data. ECCV 2018
-- done by **sharing the first several layers** of two networks to learn the generic information, while **learning a different last layer** to deal with different output for each task.
-
-
-## Delta-encoder: an effective sample synthesis method for few-shot object recognition. NIPS 2018
-- Data method: learned transformation
-
-### Abstract
-- Our approach is based on a **modified auto-encoder**, denoted delta-encoder, that learns to **synthesize new samples for an unseen category just by seeing few examples** from it. The synthesized samples are then used to train a classifier.
-- proposed approach learns to both **extract transferable intra-class deformations**, or "**deltas**", between same-class pairs of training examples, and to **apply those deltas** to the few provided examples of a **novel class** (unseen during training) in order to efficiently **synthesize samples from that new class**.
-
-### the delta-encoder
-![](https://i.imgur.com/XCGtXRv.png)
-![](https://i.imgur.com/rl5xJtP.png)
-- The simple key idea of this work is to **change the meaning of $E(X)$** from representing the "essence" of $X$, to representing the delta, or **"additional information" needed to reconstruct $X$ from $Y$** (an observed example from the same category).
-    - $E$ for encoder, $D$ for decoder
-
-## Low-shot learning with large-scale diffusion. CVPR 2018
-- Data method: transform other dataset
-
-## One-shot Learning with Memory-Augmented Neural Networks. arXiv'16
-- 这篇论文解释了单样本学习与元学习的关系
-
-
-
-
-# recommended from other lab
+## Few-Shot Learning with Embedded Class Models and Shot-Free Meta Training. arXiv 1905
+- **any-way, any-shot**
 
 ## NPRF: A Neural Pseudo Relevance Feedback Framework for Ad-hoc Information Retrieval. EMNLP 2018
 - [code - official (TF+Keras)](https://github.com/ucasir/NPRF)
 - support set 跟 query set 都跟 training set 的 data 算 KL-divergence，然後看 query set 跟 support set 的哪個 data 最像
-
-# others
-
-## Baby steps towards few-shot learning with multiple semantics. arXiv 1906
-
-## Few-Shot Learning with Embedded Class Models and Shot-Free Meta Training. arXiv 1905
-- **any-way, any-shot**
 
 ## Diversity with Cooperation: Ensemble Methods for Few-Shot Classification. arXiv 1903
 ### Abstract
@@ -310,6 +341,16 @@ Awesome Few-shot / Meta Learning Papers
 - At **test-time** we **freeze the encoder and only learn/adapt the classifier** component to limited annotated labels in FSL; new semantic attributes in ZSL.
 
 
+## Semantic Feature Augmentation in Few-shot Learning. ECCV 2018
+
+### [few-shot 知乎](https://zhuanlan.zhihu.com/p/58298920)
+
+- motivation：在特征上做数据增广不足以考察类内的变化-->在语义空间上做数据增广。
+- 方法：
+    1. 提取类别的语义空间（人工标注的语义属性空间；word2vec得到的语义word空间）
+    2. 联合训练一个特征提取器和视觉特征空间到语义空间的映射。
+    3. 对于测试的训练图像，将其映射到语义空间，在语义空间做数据增广（加入高斯噪声或者映射到相应的相似的类别），再映射到语义空间，得到增广后的特征。
+    4. 将增广的特征和原有的特征联合训练一个分类器。
 
 
 ## Meta-Learning Probabilistic Inference for Prediction. ICLR'19
@@ -367,6 +408,13 @@ Awesome Few-shot / Meta Learning Papers
 
 # CVPR 2019
 
+## LCC: Learning to Customize and Combine Neural Networks for Few-Shot Learning. CVPR'19
+
+### [CVPR19-Few-shot - 知乎](https://zhuanlan.zhihu.com/p/67402889)
+
+- motivation：超参数设置十分重要，利用meta-learning对每一层学习一个超参数；一个learner通常不稳定，在MAML的机制上学习如何融合多个learner。
+
+
 ## Meta-Transfer Learning for Few-Shot Learning. CVPR'19
 - [code - reproduced (TF)](https://github.com/y2l/meta-transfer-learning-tensorflow)
 - code - reproduced (PyTorch): under-developed
@@ -378,6 +426,11 @@ Awesome Few-shot / Meta Learning Papers
 - **Hard Task(HT) meta-batch**
     - 故意選一些 fail 的 task 並重組那些 data 成為 harder tasks 以用來 adverse re-training，希望 meta-learner 能在困難中成長 0.0
 
+## Revisiting Local Descriptor based Image-to-Class Measure for Few-shot Learning. CVPR'19
+
+### [few-shot 知乎](https://zhuanlan.zhihu.com/p/58298920)
+- motivation: 全局特征对于小样本数据不是很友好，考虑局部特征，会过滤掉干扰物体以及背景的信息。
+- 做法：对于query图像的每个局部特征都计算一个与support set图像的相似性
 
 
 ## Adversarial Meta-Adaptation Network for Blending-target Domain Adaptation. CVPR'19
@@ -386,9 +439,6 @@ Awesome Few-shot / Meta Learning Papers
 
 ## Instance-Level Meta Normalization. CVPR'19
 
-
-## Image Deformation Meta-Networks for One-Shot Learning. CVPR'19
-- [code - official (PyTorch)](https://github.com/tankche1/IDeMe-Net)
 
 ## Meta-Learning with Differentiable Convex Optimization. CVPR'19
 
@@ -408,19 +458,41 @@ Awesome Few-shot / Meta Learning Papers
 - 引用 closerlook
 - 根據 support set 得到一個 channel attention，對所有的 image 做 channel attention
 
-## Few-Shot Learning via Saliency-guided Hallucination of Samples. CVPR'19
+### [few-shot 知乎](https://zhuanlan.zhihu.com/p/58298920)
+
+- motivation：对于few-shot的support set，现有的方法都是单独为其提取特征，没有考虑这个task的更具有判别性的特征。利用support set的所有图像的信息，提取具有判别性的特征。
+- 方法：对support set生成一个channel attention。
+
+## Meta-Learning with Differentiable Convex Optimization. CVPR'19 (Oral?)
+
+- [code - official (PyTorch)](https://github.com/kjunelee/MetaOptNet)
+
+### [few-shot 知乎](https://zhuanlan.zhihu.com/p/58298920)
+
+- motivation：将最近邻分类器换做SVM，提高分类器的判别能力。
+- 方法：提取所有图像的特征，利用SVM得到所有分类器的参数w （对偶的SVM）对测试图像进行分类，优化特征提取器参数
+
+## Learning from Adversarial Features for Few-Shot Classification. CVPR'19
+
+### [few-shot 知乎](https://zhuanlan.zhihu.com/p/58298920)
+
+- motivation: 分类的交叉熵loss只会关注最显著的区域，会造成提取特征的严重过拟合。通过约束模型更加关注其他区域的特征，提高特征提取器的泛化能力。
+- 方法：
+    1. 输入图像，经过特征提取器得到特征F，经过分类器，得到概率分布，以及entropy loss $l$
+    2. 求的entropy loss对输入特征F的梯度，在初始的M上加上其梯度（新得到M使entropy loss更大）。
+    3. 将新得到的M与输入特征F相乘，求平均，经过分类器，得到cross entropy loss $l_1$
+    4. 将F再经过多个卷积层，使其空间维度为1，经过分类器，得到cross entropy loss $l_2$
+    5. 通过 $l_1+l_2$ 优化网络
+
+
 
 ## RepMet: Representative-based metric learning for classification and few-shot object detection. CVPR'19
 
-## Spot and Learn: A Maximum-Entropy Image Patch Sampler for Few-Shot Classification. CVPR'19
 
-## LaSO: Label-Set Operations networks for multi-label few-shot learning. CVPR'19
 
 ## Few-Shot Learning with Localization in Realistic Settings. CVPR'19
 
 ## Few Shot Adaptive Faster R-CNN. CVPR'19	
-
-## Large-Scale Few-Shot Learning: Knowledge Transfer with Class Hierarchy. CVPR'19
 
 ## Revisiting Local Descriptor based Image-to-Class Measure for Few-shot Learning. CVPR'19
 
@@ -486,6 +558,13 @@ Awesome Few-shot / Meta Learning Papers
 
 
 # [ICML 2018 Workshop](https://sites.google.com/site/icml18limitedlabels/accepted-papers)
+
+# Unsupervised Meta-learning
+
+## Learning Unsupervised Learning Rules. ICLR'19 (Oral?)
+
+## Unsupervised Learning via Meta-Learning. ICLR'19
+
 
 ---
 # not interested currently
