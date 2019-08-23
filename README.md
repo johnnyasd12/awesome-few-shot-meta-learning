@@ -129,6 +129,7 @@ Awesome Few-shot / Meta Learning Papers
 
 ## Revisiting Metric Learning for Few-Shot Image Classification. arXiv 1907
 - evaluate 在完全不同的 dataset 上
+- K-tuplet siamese network
 
 ## Label Efficient Learning of Transferable Representations across Domains and Tasks. NIPS 2017 (Li Fei-Fei)
 
