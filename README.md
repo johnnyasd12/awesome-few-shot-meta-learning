@@ -66,7 +66,7 @@ Awesome Few-shot / Meta Learning Papers
 - [code (Keras)](https://github.com/cnichkawde/MatchingNetwork)
 - **第一個提出 episodic training**
 - 第一個提出 **mini-ImageNet**
-    - 6
+    - we devised a new data set – **miniImageNet** – consisting of **60,000** colour images of size 84 × 84 with **100 classes, each having 600 examples**.
 - attention、memory network(multi-hopping)
 - 和 Siamese Network 不同的是：**Siamese Network 只學習一個 distance(或 similarity function)；而 Matching Network 直接 end-to-end 學習一個 nearest neighbor classifier**
 - 使用 cosine similarity 作為 metric
@@ -116,6 +116,7 @@ Awesome Few-shot / Meta Learning Papers
 
 
 ## Dynamic few-shot visual learning without forgetting. CVPR'18
+
 - SOTA
 - reduce intra-class variance 的重要性
 
@@ -278,7 +279,7 @@ Awesome Few-shot / Meta Learning Papers
 ## Image Deformation Meta-Networks for One-Shot Learning. CVPR'19
 - [code - official (PyTorch)](https://github.com/tankche1/IDeMe-Net)
 
-# Semantic-based Approach
+# Combine Semantic-based Approach
 
 ## Large-Scale Few-Shot Learning: Knowledge Transfer with Class Hierarchy. CVPR'19
 
@@ -288,6 +289,9 @@ Awesome Few-shot / Meta Learning Papers
 ## Generalized Zero- and Few-Shot Learning via Aligned Variational Autoencoders. CVPR'19
 
 - [code - official (PyTorch)](https://github.com/edgarschnfld/CADA-VAE-PyTorch)
+
+### Abstract
+-  In this work, we take feature generation one step further and propose a model where a shared latent space of image features and class embeddings is learned by modality-specific aligned variational autoencoders. 
 
 
 ## Adaptive Cross-Modal Few-Shot Learning, ICLR 2019 Workshop LLD, arXiv 1902
@@ -441,9 +445,6 @@ Awesome Few-shot / Meta Learning Papers
 ## Instance-Level Meta Normalization. CVPR'19
 
 
-## Meta-Learning with Differentiable Convex Optimization. CVPR'19
-
-
 ## Task Agnostic Meta-Learning for Few-Shot Learning. CVPR'19
 - [作者導讀 中文](https://zhuanlan.zhihu.com/p/37076777)
     - 直接最大化初始模型在不同类别上的熵（Entropy Maximization）来实现对任务的无偏性
@@ -464,7 +465,7 @@ Awesome Few-shot / Meta Learning Papers
 - motivation：对于few-shot的support set，现有的方法都是单独为其提取特征，没有考虑这个task的更具有判别性的特征。利用support set的所有图像的信息，提取具有判别性的特征。
 - 方法：对support set生成一个channel attention。
 
-## Meta-Learning with Differentiable Convex Optimization. CVPR'19 (Oral?)
+## Meta-Learning with Differentiable Convex Optimization. CVPR'19 (Oral)
 
 - [code - official (PyTorch)](https://github.com/kjunelee/MetaOptNet)
 
@@ -490,17 +491,9 @@ Awesome Few-shot / Meta Learning Papers
 ## RepMet: Representative-based metric learning for classification and few-shot object detection. CVPR'19
 
 
-
 ## Few-Shot Learning with Localization in Realistic Settings. CVPR'19
 
 ## Few Shot Adaptive Faster R-CNN. CVPR'19	
-
-## Revisiting Local Descriptor based Image-to-Class Measure for Few-shot Learning. CVPR'19
-
-## Generalized Zero- and Few-Shot Learning via Aligned Variational Autoencoders. CVPR'19
-- [code (PyTorch)](https://github.com/chichilicious/Generalized-Zero-Shot-Learning-via-Aligned-Variational-Autoencoders)
-### Abstract
--  In this work, we take feature generation one step further and propose a model where a shared latent space of image features and class embeddings is learned by modality-specific aligned variational autoencoders. 
 
 
 ## SPNet: Semantic Projection Network for Zero-Label and Few-Label Semantic Segmentation. CVPR'19
