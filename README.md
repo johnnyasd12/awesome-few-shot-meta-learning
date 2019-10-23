@@ -44,7 +44,7 @@ Awesome Few-shot / Meta Learning Papers
 - 上圖演算法 **重要**，李老師教的版本有點簡化了
 - [code - official? (TF)](https://github.com/cbfinn/maml)
 - [code - PyTorch](https://github.com/dragen1860/MAML-Pytorch)
-- [我的 NTU lecture 筆記](https://johnnyasd12.gitbooks.io/machine-learning-ntu/content/2019-meta-learning.html) [[edit](https://legacy.gitbook.com/book/johnnyasd12/machine-learning-ntu/edit#/edit/master/2019-meta-learning.md?_k=710c5j)]
+- [我的 NTU lecture 筆記](https://johnnyasd12.gitbooks.io/machine-learning-ntu/content/2019-meta-learning.html)
 - [中文1](https://zhuanlan.zhihu.com/p/57864886)
 - [中文2](https://zhuanlan.zhihu.com/p/40417018)
     - 第一次 update 參數得到 $\theta_t'$ 時，使用 support set；而真正要更新 $\theta$ 時，是使用 query set 得到的 loss
@@ -506,6 +506,12 @@ Awesome Few-shot / Meta Learning Papers
 
 # ICML 2019
 
+## Infinite Mixture Prototypes for Few-shot Learning. ICML'19 Oral
+### Abstract
+- Our infinite mixture prototypes **represent each class by a set of clusters**, unlike existing prototypical methods that represent each class by a single cluster. 
+- **semi-supervised and unsupervised** setting
+
+
 ## TapNet: Neural Network Augmented with Task-Adaptive Projection for Few-Shot Learning. ICML'19
 - 不是 domain shift
 ### Abstract
@@ -561,6 +567,12 @@ Awesome Few-shot / Meta Learning Papers
 
 
 ---
+
+# Few-shot with Graph Neural Networks
+
+## Edge-Labeling Graph Neural Network for Few-shot Learning. arXiv 1905
+
+
 # not interested currently
 
 
@@ -578,11 +590,6 @@ Awesome Few-shot / Meta Learning Papers
 ## One-Shot Unsupervised Cross Domain Translation. NeurIPS 2018
 - few-shot + GAN
 - They learn **separate embedding for source and target tasks in different domains** to map them into a task-invariant space, then learn a **shared classifier** to classify samples from all tasks.
-
-## Infinite Mixture Prototypes for Few-shot Learning. ICML'19
-### Abstract
-- Our infinite mixture prototypes **represent each class by a set of clusters**, unlike existing prototypical methods that represent each class by a single cluster. 
-- **semi-supervised and unsupervised** setting
 
 ## Taming MAML: Efficient unbiased meta-reinforcement learning. ICML'19
 
@@ -606,6 +613,9 @@ Awesome Few-shot / Meta Learning Papers
 ## Few-Shot Regression via Learned Basis Functions
 
 - propose a few-shot learning model that is tailored specifically for **regression** tasks
+
+## CANet: Class-Agnostic Segmentation Networks with Iterative Refinement and Attentive Few-Shot Learning. arXiv 1903
+
 
 ###### tags: `fewshot learning` `awesome few shot learning` `papers`
 
