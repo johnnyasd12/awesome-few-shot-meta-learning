@@ -289,6 +289,8 @@ Awesome Few-shot / Meta Learning Papers
 ## Generalized Zero- and Few-Shot Learning via Aligned Variational Autoencoders. CVPR'19
 
 - [code - official (PyTorch)](https://github.com/edgarschnfld/CADA-VAE-PyTorch)
+- [Chinese1](https://travelleralone.github.io/2019-05-31/GZSLVAE/)
+- [Chinese2](https://blog.csdn.net/cp_oldy/article/details/90751877)
 
 ### Abstract
 -  In this work, we take feature generation one step further and propose a model where a shared latent space of image features and class embeddings is learned by modality-specific aligned variational autoencoders. 
@@ -537,7 +539,26 @@ Awesome Few-shot / Meta Learning Papers
 
 ## Low-shot learning with imprinted weights. CVPR'18
 
-# ICCV 2019?
+# ICCV 2019
+
+## Deep Meta Metric Learning. ICCV 2019
+
+- [code - official (PyTorch)](https://github.com/CHENGY12/DMML)
+
+## Few-Shot Learning with Global Class Representations. ICCV 2019
+
+## Bidirectional One-Shot Unsupervised Domain Mapping. ICCV 2019
+
+## One Shot Domain Adaptation for Person Re-Identification. ICCV 2019 Oral
+
+## Few-shot Object Detection via Feature Reweighting. ICCV 2019
+
+## Few-shot Unsupervised Image-to-Image Translation. ICCV 2019
+
+## Learning Compositional Representations for Few-Shot Recognition. ICCV 2019
+
+## Boosting Few-Shot Visual Learning with Self-Supervision. ICCV 2019
+
 
 # ECCV 2018
 
