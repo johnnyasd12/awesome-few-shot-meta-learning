@@ -1,6 +1,7 @@
 Awesome Few-shot / Meta Learning Papers
 ===
 
+[![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome)
 
 # Content
 
@@ -8,10 +9,29 @@ Awesome Few-shot / Meta Learning Papers
 
 # [My paper note: A Survey on Few-shot Learning](https://hackmd.io/_T-1A6nhQyG_LxTI2phQvw)
 
+
+# Awesome Authors
+- [Han-Jia Ye](https://scholar.google.com/citations?hl=zh-TW&user=mgOYhtoAAAAJ&view_op=list_works&sortby=pubdate)
+    - metric learning
+    - meta learning
+* [Chelsea Finn](http://people.eecs.berkeley.edu/~cbfinn/), _UC Berkeley_
+    * MAML
+* [Pieter Abbeel](https://people.eecs.berkeley.edu/~pabbeel/), _UC Berkeley_
+* [Erin Grant](https://people.eecs.berkeley.edu/~eringrant/),  _UC Berkeley_
+* [Raia Hadsell](http://raiahadsell.com/index.html), _DeepMind_
+* [Misha Denil](http://mdenil.com/), _DeepMind_
+* [Adam Santoro](https://scholar.google.com/citations?hl=en&user=evIkDWoAAAAJ&view_op=list_works&sortby=pubdate), _DeepMind_
+* [Sachin Ravi](http://www.cs.princeton.edu/~sachinr/), _Princeton University_
+* [David Abel](https://david-abel.github.io/), _Brown University_
+* [Brenden Lake](https://cims.nyu.edu/~brenden/), _Facebook AI Research_
+
+
 # Classic
 
 ## Legacy Papers
 - [awesome meta learning](https://github.com/floodsung/Meta-Learning-Papers)
+- Distance metric learning for large margin nearest neighbor classification. JMLR 2009
+    - shows that non-parametric models (Weinberger & Saul, 2009) are able to capture local and heterogeneous structures in data.
 
 ## Deep transfer metric learning. CVPR 2015
 - **reducing intra-class variations of features** has been highlighted in this paper (deeper backbone???)
@@ -123,12 +143,23 @@ Awesome Few-shot / Meta Learning Papers
 ## Rapid adaptation with conditionally shifted neurons. ICML 2018
 - SOTA: AdaResNet
 
+## Cross Attention Network for Few-shot Classification. NeurIPS 2019
+- Learn a attention(mask) to pay more attention on the part of the images
 
 # Few-shot with Domain shift
 
 ## [最前沿：General Meta Learning](https://zhuanlan.zhihu.com/p/70782949)
 
+## Cross-Domain Few-Shot Classification. ICLR 2020
+
+## Metareg: Towards domain generalization using meta-regularization. NeurIPS 2018
+- 待讀
+
+## Transfer learning via learning to transfer. ICML 2018
+- [轉至這裡](https://hackmd.io/ZhhEeHuXTb2F11CpFNCPbg?view#Transfer-Learning-via-Learning-to-Transfer-ICML-2018)
+
 ## Revisiting Metric Learning for Few-Shot Image Classification. arXiv 1907
+- 待讀
 - evaluate 在完全不同的 dataset 上
 - K-tuplet siamese network
 
@@ -141,6 +172,7 @@ Awesome Few-shot / Meta Learning Papers
 ## Learning to generalize: Meta-learning for domain generalization, AAAI 18
 
 ## Consensus Adversarial Domain Adaptation. AAAI 19
+- 待讀
 - few-shot domain adaptation scheme (F-CADA)
 
 
@@ -551,6 +583,9 @@ Awesome Few-shot / Meta Learning Papers
 
 ## One Shot Domain Adaptation for Person Re-Identification. ICCV 2019 Oral
 
+- renamed to: **Self-similarity Grouping: A Simple Unsupervised Cross Domain Adaptation Approach for Person Re-identification** ?
+- [code - official (PyTorch)](https://github.com/OasisYang/SSG)
+
 ## Few-shot Object Detection via Feature Reweighting. ICCV 2019
 
 ## Few-shot Unsupervised Image-to-Image Translation. ICCV 2019
@@ -559,10 +594,19 @@ Awesome Few-shot / Meta Learning Papers
 
 ## Boosting Few-Shot Visual Learning with Self-Supervision. ICCV 2019
 
+## Deep Meta Learning for Real-Time Target-Aware Visual Tracking. ICCV 2019
+
+## Task2Vec: Task Embedding for Meta-Learning. ICCV 2019
+
+## Meta-Sim Learning to Generate Synthetic Datasets. ICCV 2019 Oral
+
 
 # ECCV 2018
 
 # AAAI 2019
+
+## Hybrid Attention-Based Prototypical Networks for Noisy Few-Shot Relation Classification. AAAI 2019
+- [code - official (PyTorch)](https://github.com/thunlp/HATT-Proto)
 
 
 # ~~CVPR 2019 Workshop~~
@@ -583,6 +627,7 @@ Awesome Few-shot / Meta Learning Papers
 # Unsupervised Meta-learning
 
 ## Learning Unsupervised Learning Rules. ICLR'19 (Oral?)
+- point out that 
 
 ## Unsupervised Learning via Meta-Learning. ICLR'19
 
