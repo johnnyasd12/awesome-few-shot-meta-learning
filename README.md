@@ -150,34 +150,49 @@ Awesome Few-shot / Meta Learning Papers
 
 ## [最前沿：General Meta Learning](https://zhuanlan.zhihu.com/p/70782949)
 
+## A Meta-Transfer Objective for Learning to Disentangle Causal Mechanisms. 2019 (Yoshua Bengio)
+
+- seems doing **causal inference** to fast adapt under domain shift
+
 ## Cross-Domain Few-Shot Classification. ICLR 2020
+- [code - official (PyTorch)](https://github.com/hytseng0509/CrossDomainFewShot)
+- **metric-based** few-shot classification often fail to generalize to unseen domains due to **large discrepancy** of the feature distribution across domains.
+- core idea is to use **feature-wise transformation layers** for **augmenting the image features** using affine transforms to **simulate various feature distributions** under different domains in the **training stage**.
+- further apply a **learning-to-learn approach to search for the hyper-parameters** of the **feature-wise transformation layers**.
+    - optimize the feature-wise transformation layers so that the model can **work well on the unseen domains** after training the **model using the seen domains**.
+- modulated activations $\hat z_{c,h,w}=\gamma_c\times z_{c,h,w}+\beta_c$
+    - $\gamma\sim N(1,\text{softplus}(\theta_\gamma))$
+    - $\beta\sim N(0,\text{softplus}(\theta_\beta))$
+    - $\theta_\gamma,\theta_\beta$ are hyperparameters. 
+- **train** on
+    - **mini-Imagenet (pseudo-seen domain)**
+    - **CUB-200 (pseudo-unseen domain)**
+- 
 
-## Metareg: Towards domain generalization using meta-regularization. NeurIPS 2018
-- 待讀
 
-## Transfer learning via learning to transfer. ICML 2018
-- [轉至這裡](https://hackmd.io/ZhhEeHuXTb2F11CpFNCPbg?view#Transfer-Learning-via-Learning-to-Transfer-ICML-2018)
+
+
+
+
 
 ## Revisiting Metric Learning for Few-Shot Image Classification. arXiv 1907
-- 待讀
-- evaluate 在完全不同的 dataset 上
-- K-tuplet siamese network
+- cross domain experiment, but seems not explicitly deal with domain shift in proposed method
+- trained on mini-Imagenet
+- tested on
+    - mini-Imagenet
+    - Caltech-101
+    - CUB-200
+    - Stanford Dogs & Cars
+- Revisit triplet network, propose **K-tuplet siamese network**
+    - $K$ negative samples in a batch
+    - semi-hard mining (wats difference with facenet???)
 
 ## Label Efficient Learning of Transferable Representations across Domains and Tasks. NIPS 2017 (Li Fei-Fei)
 
-### Abstract
 - Our model is simultaneously optimized on **labeled source data and unlabeled or sparsely labeled data in the target domain**.
 - Our method shows compelling results on **novel classes within a new domain** even when **only a few labeled examples per class** are available, outperforming the prevalent fine-tuning approach.
+- initialize the CNN for the target tasks in the target domain by a **pre-trained CNN learning from source tasks** in source domain. During training, they use an **adversarial loss** calculated from **representations in multiple layers** of CNN to force the two CNNs projects samples to a **task-invariant space**.
 
-## Learning to generalize: Meta-learning for domain generalization, AAAI 18
-
-## Consensus Adversarial Domain Adaptation. AAAI 19
-- 待讀
-- few-shot domain adaptation scheme (F-CADA)
-
-
-## d-SNE: Domain Adaptation using Stochastic Neighborhood Embedding. CVPR'19
-- supervised domain adaptation with few labeled data
 
 ## One Shot Domain Adaptation for Person Re-Identification. 2018
 
@@ -187,26 +202,6 @@ Awesome Few-shot / Meta Learning Papers
 - The proposed approach consists of **combining** a known few shot learning model, prototypical nets, together with image to image translation via CycleGAN for domain adaptation.  Thus the **algorithmic novelty is minor** and amounts to combining two techniques to address a different problem statement. 
 - though meta learning could be a solution to learn with few examples, the solution being used in this work is **not meta learning** and so should not be in the title to avoid confusion.
 
-## Few-shot adversarial domain adaptation. NIPS 2017
-- [中文](https://blog.csdn.net/Adupanfei/article/details/85164925)
-- [中文2](https://www.twblogs.net/a/5c1f39d2bd9eee16b3da81c0)
-- [code (PyTorch)](https://github.com/Coolnesss/fada-pytorch)
-- [My paper note](https://hackmd.io/8H_J9XauQgWrGfkLz88dKQ?view)
-- supervised domain adaptation
-- 並不真的 focus 在 few-shot learning
-<!--
-- 先在 source target 上 pre-train 一個 variational auto-encoder(VAE)，複製給 target task。兩個 task share 一些 layer，target task 只能 update task-specific layer；source task 可以 update shared 跟 他自己的 task-specific layer
--->
-
-## Transferable meta learning across domains. UAI 2018
-- 似乎用到 target domain 的 unlabeled data
-- MAML + DANN?
-- 這篇也跟樓上一樣不是真的在做 few-shot，**source 跟 target 是相同 label space**
-- [my paper note](https://hackmd.io/yh6uPnEwQzOfuvYOynB06Q)
-
-### Abstract
-- Meta-learning algorithms require **sufficient tasks** for meta model training and resulted model can **only solve new similar tasks**. 
-- to address these two problems, we propose a new **transferable meta learning (TML)** algorithm
 
 
 ## Learning Embedding Adaptation for Few-Shot Learning. arXiv 1812
@@ -246,16 +241,17 @@ Awesome Few-shot / Meta Learning Papers
     - **跟我想問的問題一樣**
     - Authors' Answer: Sorry for the confusion. As addressed in 4.3, gaps among different methods diminish as the backbone gets deeper *in the CUB dataset*. In the mini-ImageNet dataset, the results are more complicated due to the domain difference. We further discuss this phenomenon in Section 4.4 and 4.5. We have clarified related texts in the revised paper. 
 
-## Few-shot Learning with Meta Metric Learners. arXiv 1901.09890
+## Few-shot Learning with Meta Metric Learners. NIPS 2017 workshop on Meta-Learning, arXiv 1901.09890
 - Microsoft AI & Research, IBM Research AI, JD AI Research
 - Sentence Classification Services / Omniglot / Amazon Reviews
-
-### Abstract
 - Existing meta-learning or metric-learning based few-shot learning approaches are **limited in handling diverse domains** with various number of labels. 
-### Conclusion
 - we proposed a meta metric learner for few-shot learning, which is a **combination of an LSTM meta-learner and a base metric classifier**.
 - The proposed method takes several advantages such as is able to **handle unbalanced classes** as well as to **generate task-specific metrics**.
-
+- We test our approach in the ‘k-shot N-way’ few-shot learning setting used in previous work and new realistic few-shot setting with **diverse multi-domain tasks and flexible label numbers**.
+- contributions
+    1. improve the existing few-shot learning work to **handle various class labels (not only k-shot N-way)**
+    2. enable the model to **learn task specific metrics** via training a meta learner
+    3. we are the first to investigate **few-shot deep learning methods in the text domains**.
 
 
 ## Subspace Networks for Few-shot Classification. arXiv 1905.13613
@@ -269,9 +265,6 @@ Awesome Few-shot / Meta Learning Papers
 ## Human-level concept learning through probabilistic program induction.
 
 - (No Deep Learning, but worth reading)
-
-## Label efficient learning of transferable representations across domains and tasks. NIPS 2017
-- initialize the CNN for the target tasks in the target domain by a **pre-trained CNN learning from source tasks** in source domain. During training, they use an **adversarial loss** calculated from **representations in multiple layers** of CNN to force the two CNNs projects samples to a **task-invariant space**.
 
 
 
@@ -362,7 +355,7 @@ Awesome Few-shot / Meta Learning Papers
 - [code - official (TF+Keras)](https://github.com/ucasir/NPRF)
 - support set 跟 query set 都跟 training set 的 data 算 KL-divergence，然後看 query set 跟 support set 的哪個 data 最像
 
-## Diversity with Cooperation: Ensemble Methods for Few-Shot Classification. arXiv 1903
+## Diversity with Cooperation: Ensemble Methods for Few-Shot Classification. ICCV 2019, arXiv 1903
 ### Abstract
 - 不用 meta-learning，而是用 ensemble DNN 的方式達到 SOTA 效果
 - **even a single network obtained by distillation yields state-of-the-art** results.
@@ -627,7 +620,6 @@ Awesome Few-shot / Meta Learning Papers
 # Unsupervised Meta-learning
 
 ## Learning Unsupervised Learning Rules. ICLR'19 (Oral?)
-- point out that 
 
 ## Unsupervised Learning via Meta-Learning. ICLR'19
 
