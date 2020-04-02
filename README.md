@@ -23,7 +23,7 @@ Awesome Few-shot / Meta Learning Papers
 * [Adam Santoro](https://scholar.google.com/citations?hl=en&user=evIkDWoAAAAJ&view_op=list_works&sortby=pubdate), _DeepMind_
 * [Sachin Ravi](http://www.cs.princeton.edu/~sachinr/), _Princeton University_
 * [David Abel](https://david-abel.github.io/), _Brown University_
-* [Brenden Lake](https://cims.nyu.edu/~brenden/), _Facebook AI Research_
+* [Brenden Lake](https://cims.nyu.edu/~brenden/), _Facebook AI Research_fjdslfjsl
 
 
 # Classic
@@ -32,6 +32,7 @@ Awesome Few-shot / Meta Learning Papers
 - [awesome meta learning](https://github.com/floodsung/Meta-Learning-Papers)
 - Distance metric learning for large margin nearest neighbor classification. JMLR 2009
     - shows that non-parametric models (Weinberger & Saul, 2009) are able to capture local and heterogeneous structures in data.
+
 
 ## Deep transfer metric learning. CVPR 2015
 - **reducing intra-class variations of features** has been highlighted in this paper (deeper backbone???)
@@ -59,6 +60,12 @@ Awesome Few-shot / Meta Learning Papers
     - When new data is encountered, the **conventional models must inefficiently relearn their parameters** to adequately incorporate the new information without catastrophic interference.
 - We also introduce a **new method for accessing an external memory that focuses on memory content**, unlike previous methods that additionally use memory location-based focusing mechanisms.
 
+
+## One-shot Learning with Memory-Augmented Neural Networks. arXiv'16
+- 这篇论文解释了单样本学习与元学习的关系
+
+
+
 ## Model-Agnostic Meta-Learning for Fast Adaptation of Deep Networks. ICML 2017
 ![](https://i.imgur.com/vtN6Wso.png)
 - 上圖演算法 **重要**，李老師教的版本有點簡化了
@@ -71,6 +78,7 @@ Awesome Few-shot / Meta Learning Papers
 - episodic training
 - 任何使用 gradient descent 的模型都適用本方法
 - 尋找一個模型的 initialize parameter
+- shows that simply fine-tuning a convolutional neural network on a new classification task with very few samples has been shown to provide poor results
 
 
 ## Reptile: A Scalable Meta-Learning Algorithm. 2018
@@ -146,9 +154,47 @@ Awesome Few-shot / Meta Learning Papers
 ## Cross Attention Network for Few-shot Classification. NeurIPS 2019
 - Learn a attention(mask) to pay more attention on the part of the images
 
+## Fine-grained visual categorization using meta-learning optimization with sample selection of auxiliary data. ECCV 2018
+- done by **sharing the first several layers** of two networks to learn the generic information, while **learning a different last layer** to deal with different output for each task.
+
 # Few-shot with Domain shift
 
 ## [最前沿：General Meta Learning](https://zhuanlan.zhihu.com/p/70782949)
+
+## Domain-Adaptive Few-Shot Learning. arXiv 2003
+
+## A New Benchmark for Evaluation of Cross-Domain Few-Shot Learning. arXiv 1912
+
+## Optimized Generic Feature Learning for Few-shot Classification across Domains. arXiv 2001
+- 找 hyperparameter，怎感覺 approach 怪怪
+- train/val/test:
+
+## Charting the Right Manifold: Manifold Mixup for Few-shot Learning. WACV 2020
+- 有做 cross-domain experiments
+- train/val/test:
+
+
+
+## REVISITING FINE-TUNING FOR FEW-SHOT LEARNING. arXiv 1910
+- 有做 cross-domain experiments
+- train/val/test:
+
+## Few-Shot Learning as Domain Adaptation: Algorithm and Analysis. arXiv 2002
+- 可以把 few-shot scenario 的 label shift 看成是一種 domain shift
+- 建構兩個 sub-episode (沒有 class overlap) 來模擬 label(domain) shift
+
+## Diversity with Cooperation: Ensemble Methods for Few-Shot Classification. ICCV 2019
+
+- [my note](https://hackmd.io/@johnnyasd12/ByhMOuiUL)
+- 不用 meta-learning，而是用 ensemble DNN 的方式達到 SOTA 效果
+- introducing new strategies to encourage the networks to cooperate, while **encouraging prediction diversity**
+- **有評估 cross domain 的 performance**
+- even a single network obtained by distillation yields state-of-the-art results.
+- **cooperation v.s. diversity**
+    - ![](https://i.imgur.com/cN9fCyg.png)
+    - cooperation: encourages non-gound truth prob(紅色) to be **similar**
+    - diversity: encourages **orthogonality**
+
 
 ## A Meta-Transfer Objective for Learning to Disentangle Causal Mechanisms. 2019 (Yoshua Bengio)
 
@@ -167,7 +213,6 @@ Awesome Few-shot / Meta Learning Papers
 - **train** on
     - **mini-Imagenet (pseudo-seen domain)**
     - **CUB-200 (pseudo-unseen domain)**
-- 
 
 
 
@@ -262,23 +307,24 @@ Awesome Few-shot / Meta Learning Papers
 
 # 優先
 
+
+# 理解 few-shot learning
+
 ## Human-level concept learning through probabilistic program induction.
 
 - (No Deep Learning, but worth reading)
 
+## Negative Margin Matters: Understanding Margin in Few-shot Classification. arXiv 2003
 
 
-## Fine-grained visual categorization using meta-learning optimization with sample selection of auxiliary data. ECCV 2018
-- done by **sharing the first several layers** of two networks to learn the generic information, while **learning a different last layer** to deal with different output for each task.
 
+
+
+# Data Augmentation -based Approach
 
 ## Low-shot learning with large-scale diffusion. CVPR 2018
 - Data method: transform other dataset
 
-## One-shot Learning with Memory-Augmented Neural Networks. arXiv'16
-- 这篇论文解释了单样本学习与元学习的关系
-
-# Data Augmentation -based Approach
 
 ## Delta-encoder: an effective sample synthesis method for few-shot object recognition. NIPS 2018
 - Data method: learned transformation
@@ -305,6 +351,14 @@ Awesome Few-shot / Meta Learning Papers
 - [code - official (PyTorch)](https://github.com/tankche1/IDeMe-Net)
 
 # Combine Semantic-based Approach
+
+## Prototype Propagation Networks (PPN) for Weakly-supervised Few-shot Learning on Category Graph. IJCAI 2019
+- 應該是利用 高level 低 level 的 class 來把 prototype 做 propagation
+
+## Learning Compositional Representations for Few-Shot Recognition. ICCV 2019
+- 也用到 attribute
+- CUB
+
 
 ## Large-Scale Few-Shot Learning: Knowledge Transfer with Class Hierarchy. CVPR'19
 
@@ -335,6 +389,11 @@ Awesome Few-shot / Meta Learning Papers
 
 # others
 
+## Incremental Few-Shot Learning with Attention Attractor Networks. NIPS 2019
+
+- problem
+    - This paper addresses this problem, **incremental few-shot learning**, where a regular classification network has already been trained to **recognize a set of base classes**, and several extra **novel classes** are being considered, each with only a **few labeled** examples. **After learning the novel classes**, the model is then evaluated on the overall classification performance on **both base and novel classes**
+
 ## Multi-attention Network for One Shot Learning. CVPR 2017
 
 ### [few-shot 知乎](https://zhuanlan.zhihu.com/p/58298920)
@@ -355,10 +414,6 @@ Awesome Few-shot / Meta Learning Papers
 - [code - official (TF+Keras)](https://github.com/ucasir/NPRF)
 - support set 跟 query set 都跟 training set 的 data 算 KL-divergence，然後看 query set 跟 support set 的哪個 data 最像
 
-## Diversity with Cooperation: Ensemble Methods for Few-Shot Classification. ICCV 2019, arXiv 1903
-### Abstract
-- 不用 meta-learning，而是用 ensemble DNN 的方式達到 SOTA 效果
-- **even a single network obtained by distillation yields state-of-the-art** results.
 
 ## Meta-learning autoencoders for few-shot prediction. arXiv 1807 (MIT)
 
@@ -600,6 +655,7 @@ Awesome Few-shot / Meta Learning Papers
 
 ## Hybrid Attention-Based Prototypical Networks for Noisy Few-Shot Relation Classification. AAAI 2019
 - [code - official (PyTorch)](https://github.com/thunlp/HATT-Proto)
+- aims to deal with **noisy data**
 
 
 # ~~CVPR 2019 Workshop~~
