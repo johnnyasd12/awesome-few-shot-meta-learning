@@ -80,6 +80,7 @@ Awesome Few-shot / Meta Learning Papers
 - 尋找一個模型的 initialize parameter
 - shows that simply fine-tuning a convolutional neural network on a new classification task with very few samples has been shown to provide poor results
 
+## Few-shot image recognition by predicting parameters from activations. CVPR 2018
 
 ## Reptile: A Scalable Meta-Learning Algorithm. 2018
 - episodic training
@@ -143,13 +144,24 @@ Awesome Few-shot / Meta Learning Papers
     - contributions 有二：(1)本來 MAML 是固定 init params，現在他們把他變成低維 latent space。(2)依據 subproblem 的 input data 來決定 init params
 
 
-## Dynamic few-shot visual learning without forgetting. CVPR'18
+## Dynamic few-shot visual learning without forgetting. CVPR 2018
 
 - SOTA
 - reduce intra-class variance 的重要性
 
+## Low-Shot Learning from Imaginary Data. CVPR 2018
+
 ## Rapid adaptation with conditionally shifted neurons. ICML 2018
 - SOTA: AdaResNet
+
+## Meta-Learning with Differentiable Convex Optimization. CVPR'19 (Oral)
+
+- [code - official (PyTorch)](https://github.com/kjunelee/MetaOptNet)
+- SOTA: MetaOptNet
+- [few-shot 知乎](https://zhuanlan.zhihu.com/p/58298920)
+- motivation：将最近邻分类器换做SVM，提高分类器的判别能力。
+- 方法：提取所有图像的特征，利用SVM得到所有分类器的参数w （对偶的SVM）对测试图像进行分类，优化特征提取器参数
+
 
 ## Cross Attention Network for Few-shot Classification. NeurIPS 2019
 - Learn a attention(mask) to pay more attention on the part of the images
@@ -162,26 +174,45 @@ Awesome Few-shot / Meta Learning Papers
 ## [最前沿：General Meta Learning](https://zhuanlan.zhihu.com/p/70782949)
 
 ## Domain-Adaptive Few-Shot Learning. arXiv 2003
+- [code - official (PyTorch)](https://github.com/dingmyu/DAPN)
+- 好像是跟 CloserLook 一樣的設定
 
 ## A New Benchmark for Evaluation of Cross-Domain Few-Shot Learning. arXiv 1912
+- [code - official (PyTorch)](https://github.com/IBM/cdfsl-benchmark)
+- train on miniImagenet?
+- performance 和 dataset 與 imagenet 相似度有關
+- cross domain 時，meta-learning 方法比 fine-tune 糟
+- 可以把這篇當成一個 survey 吧
 
 ## Optimized Generic Feature Learning for Few-shot Classification across Domains. arXiv 2001
 - 找 hyperparameter，怎感覺 approach 怪怪
 - train/val/test:
 
 ## Charting the Right Manifold: Manifold Mixup for Few-shot Learning. WACV 2020
-- 有做 cross-domain experiments
-- train/val/test:
-
+- 有做 cross-domain experiments (miniImagent -> CUB)
+- dataset: CIFAR-FS, CUB, miniImagenet, tieredImagenet
+- 就 Manifold Mixup + Semi-supervised (+meta-learning?)
+- 感覺沒什麼 novelty，而且還用 testing set 調參數?
 
 
 ## REVISITING FINE-TUNING FOR FEW-SHOT LEARNING. arXiv 1910
 - 有做 cross-domain experiments
-- train/val/test:
+- cross domain train/val/test:
 
 ## Few-Shot Learning as Domain Adaptation: Algorithm and Analysis. arXiv 2002
 - 可以把 few-shot scenario 的 label shift 看成是一種 domain shift
 - 建構兩個 sub-episode (沒有 class overlap) 來模擬 label(domain) shift
+
+## Few-Shot Classification on Unseen Domains by Learning Disparate Modulators. arXiv 1909, ICLR 2020 rejected
+- 怎麼感覺跟我的 idea 超像的啊
+- 別名：Domain-Agnostic Few-Shot Classification by Learning Disparate Modulators
+- multi-domain dataset: Visual Decathlon
+- procedure
+    1. 拿 source 來 train base network
+    2. 每個 domain 都 train 一個 per-layer module $\alpha_i$
+    3. 訓練一個 model selction network 來 predict 最好的 network (DoS)
+        - 或者直接 Averaging all network (DoA)
+- 我覺得他的 DoS (在unseen domain)好廢，強的只有 DoA，可是 DoA 就沒 novelty，難怪沒上
 
 ## Diversity with Cooperation: Ensemble Methods for Few-Shot Classification. ICCV 2019
 
@@ -305,10 +336,12 @@ Awesome Few-shot / Meta Learning Papers
 - follow "A Closer Look at Few-shot Classification" 的設定
 - 根據 embedded query point 到每個 class **subspace 的距離**來 classify example
 
-# 優先
-
 
 # 理解 few-shot learning
+
+## A Meta Understanding of Meta-Learning. ICML'19 Workshop (under review)
+- 別名 "Revisiting Meta-Learning as Supervised Learning"
+- 以 supervised learning 的方式去理解 meta-learning
 
 ## Human-level concept learning through probabilistic program induction.
 
@@ -316,8 +349,11 @@ Awesome Few-shot / Meta Learning Papers
 
 ## Negative Margin Matters: Understanding Margin in Few-shot Classification. arXiv 2003
 
+## Semantic Regularization: Improve Few-shot Image Classification by Reducing Meta Shift. arXiv 1912
 
 
+## Rethinking Few-Shot Image Classification: a Good Embedding Is All You Need? arXiv 2003
+- 複雜的 meta-learning 結構其實沒這麼屌
 
 
 # Data Augmentation -based Approach
@@ -547,14 +583,6 @@ Awesome Few-shot / Meta Learning Papers
 - motivation：对于few-shot的support set，现有的方法都是单独为其提取特征，没有考虑这个task的更具有判别性的特征。利用support set的所有图像的信息，提取具有判别性的特征。
 - 方法：对support set生成一个channel attention。
 
-## Meta-Learning with Differentiable Convex Optimization. CVPR'19 (Oral)
-
-- [code - official (PyTorch)](https://github.com/kjunelee/MetaOptNet)
-
-### [few-shot 知乎](https://zhuanlan.zhihu.com/p/58298920)
-
-- motivation：将最近邻分类器换做SVM，提高分类器的判别能力。
-- 方法：提取所有图像的特征，利用SVM得到所有分类器的参数w （对偶的SVM）对测试图像进行分类，优化特征提取器参数
 
 ## Learning from Adversarial Features for Few-Shot Classification. CVPR'19
 
@@ -614,8 +642,7 @@ Awesome Few-shot / Meta Learning Papers
 - We propose **CAVIA** for meta-learning, a simple extension to **MAML** that is **less prone to meta-overfitting**, easier to parallelise, and more **interpretable**.
 - CAVIA partitions the model parameters into two parts: **context parameters** that serve as **additional input** to the model and are **adapted on individual tasks**, and **shared parameters** that are meta-trained and **shared across tasks**. At **test time, only the context parameters are updated**, leading to a low-dimensional task representation. 
 
-## A Meta Understanding of Meta-Learning. ICML'19 Workshop (under review)
-- 以 supervised learning 的方式去理解 meta-learning
+
 
 ## Low-shot learning with imprinted weights. CVPR'18
 
@@ -648,6 +675,7 @@ Awesome Few-shot / Meta Learning Papers
 
 ## Meta-Sim Learning to Generate Synthetic Datasets. ICCV 2019 Oral
 
+## Meta-Learning to Detect Rare Objects. ICCV 2019
 
 # ECCV 2018
 
