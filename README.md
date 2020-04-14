@@ -1,7 +1,11 @@
+---
+tags: fewshot learning, awesome few shot learning, papers
+---
+
 Awesome Few-shot / Meta Learning Papers
 ===
 
-[![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome)
+[![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome) ![](https://camo.githubusercontent.com/b47c798defaffaed99f82859e35ae95ce2486923/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f46657753686f742d73747564792d79656c6c6f77677265656e)
 
 # Content
 
@@ -9,21 +13,6 @@ Awesome Few-shot / Meta Learning Papers
 
 # [My paper note: A Survey on Few-shot Learning](https://hackmd.io/_T-1A6nhQyG_LxTI2phQvw)
 
-
-# Awesome Authors
-- [Han-Jia Ye](https://scholar.google.com/citations?hl=zh-TW&user=mgOYhtoAAAAJ&view_op=list_works&sortby=pubdate)
-    - metric learning
-    - meta learning
-* [Chelsea Finn](http://people.eecs.berkeley.edu/~cbfinn/), _UC Berkeley_
-    * MAML
-* [Pieter Abbeel](https://people.eecs.berkeley.edu/~pabbeel/), _UC Berkeley_
-* [Erin Grant](https://people.eecs.berkeley.edu/~eringrant/),  _UC Berkeley_
-* [Raia Hadsell](http://raiahadsell.com/index.html), _DeepMind_
-* [Misha Denil](http://mdenil.com/), _DeepMind_
-* [Adam Santoro](https://scholar.google.com/citations?hl=en&user=evIkDWoAAAAJ&view_op=list_works&sortby=pubdate), _DeepMind_
-* [Sachin Ravi](http://www.cs.princeton.edu/~sachinr/), _Princeton University_
-* [David Abel](https://david-abel.github.io/), _Brown University_
-* [Brenden Lake](https://cims.nyu.edu/~brenden/), _Facebook AI Research_fjdslfjsl
 
 
 # Classic
@@ -117,6 +106,7 @@ Awesome Few-shot / Meta Learning Papers
 ## TADAM: Task dependent adaptive metric for improved few-shot learning. NIPS 2018
 - [code - official (TF)](https://github.com/ElementAI/TADAM)
 - 借鑑 ProtoNet 思想
+- 提出 dataset: Fewshot-CIFAR100
 - metric scaling
     - 學習一個 scaling factor $\alpha$，這樣可更好的輸出 metric 大小在合適的範圍
 - task conditioning
@@ -216,7 +206,6 @@ Awesome Few-shot / Meta Learning Papers
 
 ## Diversity with Cooperation: Ensemble Methods for Few-Shot Classification. ICCV 2019
 
-- [my note](https://hackmd.io/@johnnyasd12/ByhMOuiUL)
 - 不用 meta-learning，而是用 ensemble DNN 的方式達到 SOTA 效果
 - introducing new strategies to encourage the networks to cooperate, while **encouraging prediction diversity**
 - **有評估 cross domain 的 performance**
@@ -521,6 +510,7 @@ Awesome Few-shot / Meta Learning Papers
 
 ## Meta-learning with differentiable closed-form solvers. ICLR'19
 - ridge regression
+- 提出 dataset: CIFAR-FS
 
 
 ## Meta-Learning For Stochastic Gradient MCMC. ICLR'19
@@ -759,6 +749,26 @@ Awesome Few-shot / Meta Learning Papers
 ## CANet: Class-Agnostic Segmentation Networks with Iterative Refinement and Attentive Few-Shot Learning. arXiv 1903
 
 
+# Awesome Authors
+- [Han-Jia Ye](https://scholar.google.com/citations?hl=zh-TW&user=mgOYhtoAAAAJ&view_op=list_works&sortby=pubdate)
+    - metric learning
+    - meta learning
+* [Chelsea Finn](http://people.eecs.berkeley.edu/~cbfinn/), _UC Berkeley_
+    * MAML
+* [Pieter Abbeel](https://people.eecs.berkeley.edu/~pabbeel/), _UC Berkeley_
+* [Erin Grant](https://people.eecs.berkeley.edu/~eringrant/),  _UC Berkeley_
+* [Raia Hadsell](http://raiahadsell.com/index.html), _DeepMind_
+* [Misha Denil](http://mdenil.com/), _DeepMind_
+* [Adam Santoro](https://scholar.google.com/citations?hl=en&user=evIkDWoAAAAJ&view_op=list_works&sortby=pubdate), _DeepMind_
+* [Sachin Ravi](http://www.cs.princeton.edu/~sachinr/), _Princeton University_
+* [David Abel](https://david-abel.github.io/), _Brown University_
+* [Brenden Lake](https://cims.nyu.edu/~brenden/), _Facebook AI Research_fjdslfjsl
+
+# Datasets
+
+
+<!--
 ###### tags: `fewshot learning` `awesome few shot learning` `papers`
+-->
 
 
