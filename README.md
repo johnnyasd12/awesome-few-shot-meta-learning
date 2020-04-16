@@ -164,7 +164,7 @@ Awesome Few-shot / Meta Learning Papers
 
 ## [最前沿：General Meta Learning](https://zhuanlan.zhihu.com/p/70782949)
 
-## Domain-Adaptive Few-Shot Learning. arXiv 2003
+## Domain-Adaptive Few-Shot Learning. arXiv'2003
 - [code - official (PyTorch)](https://github.com/dingmyu/DAPN)
 - 好像是跟 CloserLook 一樣的設定
 
@@ -175,7 +175,7 @@ Awesome Few-shot / Meta Learning Papers
 - cross domain 時，meta-learning 方法比 fine-tune 糟
 - 可以把這篇當成一個 survey 吧
 
-## Optimized Generic Feature Learning for Few-shot Classification across Domains. arXiv 2001
+## Optimized Generic Feature Learning for Few-shot Classification across Domains. arXiv'2001
 - 找 hyperparameter，怎感覺 approach 怪怪
 - train/val/test:
 
@@ -190,7 +190,7 @@ Awesome Few-shot / Meta Learning Papers
 - 有做 cross-domain experiments
 - cross domain train/val/test:
 
-## Few-Shot Learning as Domain Adaptation: Algorithm and Analysis. arXiv 2002
+## Few-Shot Learning as Domain Adaptation: Algorithm and Analysis. arXiv'2002
 - 可以把 few-shot scenario 的 label shift 看成是一種 domain shift
 - 建構兩個 sub-episode (沒有 class overlap) 來模擬 label(domain) shift
 
@@ -337,12 +337,12 @@ Awesome Few-shot / Meta Learning Papers
 
 - (No Deep Learning, but worth reading)
 
-## Negative Margin Matters: Understanding Margin in Few-shot Classification. arXiv 2003
+## Negative Margin Matters: Understanding Margin in Few-shot Classification. arXiv'2003
 
 ## Semantic Regularization: Improve Few-shot Image Classification by Reducing Meta Shift. arXiv'1912
 
 
-## Rethinking Few-Shot Image Classification: a Good Embedding Is All You Need? arXiv 2003
+## Rethinking Few-Shot Image Classification: a Good Embedding Is All You Need? arXiv'2003
 - 複雜的 meta-learning 結構其實沒這麼屌
 
 ## A Theoretical Analysis of the Number of Shots in Few-Shot Learning. ICLR 2020
@@ -571,6 +571,7 @@ Awesome Few-shot / Meta Learning Papers
 ## Task Agnostic Meta-Learning for Few-Shot Learning. CVPR 2019
 - [作者導讀 中文](https://zhuanlan.zhihu.com/p/37076777)
     - 直接最大化初始模型在不同类别上的熵（Entropy Maximization）来实现对任务的无偏性
+- optimized-based meta-learning?
 
 
 ### 想讀
@@ -606,7 +607,7 @@ Awesome Few-shot / Meta Learning Papers
 
 ## Few-Shot Learning with Localization in Realistic Settings. CVPR 2019
 
-## Few Shot Adaptive Faster R-CNN. CVPR 2019	
+## Few Shot Adaptive Faster R-CNN. CVPR 2019    
 
 
 ## SPNet: Semantic Projection Network for Zero-Label and Few-Label Semantic Segmentation. CVPR 2019
@@ -635,16 +636,12 @@ Awesome Few-shot / Meta Learning Papers
 
 ## LGM-Net: Learning to Generate Matching Networks for Few-Shot Learning. ICML 2019
 
-### code
 - [code - official (TF)](https://github.com/likesiwell/LGM-Net/)
-
-### Abstract
 -  **no further tuning** steps are required compared to other meta-learning approaches
 
 
 ## Fast Context Adaptation via Meta-Learning. ICML 2019
 
-### Abstract
 - We propose **CAVIA** for meta-learning, a simple extension to **MAML** that is **less prone to meta-overfitting**, easier to parallelise, and more **interpretable**.
 - CAVIA partitions the model parameters into two parts: **context parameters** that serve as **additional input** to the model and are **adapted on individual tasks**, and **shared parameters** that are meta-trained and **shared across tasks**. At **test time, only the context parameters are updated**, leading to a low-dimensional task representation. 
 
