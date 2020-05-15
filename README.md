@@ -342,15 +342,29 @@ Awesome Few-shot / Meta Learning Papers
 ## Semantic Regularization: Improve Few-shot Image Classification by Reducing Meta Shift. arXiv'1912
 
 
+
+## A Theoretical Analysis of the Number of Shots in Few-Shot Learning. ICLR 2020
+
+# Rethinking Meta-learning
+
+## A Baseline for Few-Shot Image Classification. ICLR 2020
+
 ## Rethinking Few-Shot Image Classification: a Good Embedding Is All You Need? arXiv'2003
 - 複雜的 meta-learning 結構其實沒這麼屌
 
-## A Theoretical Analysis of the Number of Shots in Few-Shot Learning. ICLR 2020
+## A Baseline for Few-Shot Image Classification. ICLR 2020
+
+## A New Meta-Baseline for Few-Shot Learning. arXiv'2003
+
+## All you need is a good representation: A multi-level and classifier-centric representation for few-shot learning. arXiv'1911
+
 
 # Data Augmentation -based Approach
 
 ## Low-shot learning with large-scale diffusion. CVPR 2018
 - Data method: transform other dataset
+- semi-supervised?
+- [code - official (PyTorch, Intel MKL, faiss)](https://github.com/facebookresearch/low-shot-with-diffusion)
 
 
 ## Delta-encoder: an effective sample synthesis method for few-shot object recognition. NIPS 2018
@@ -479,16 +493,14 @@ Awesome Few-shot / Meta Learning Papers
 ## Learning Classifiers for Target Domain with Limited or No Labels. ICML 2019
 - 好像不是做 domain shift 的 @@
 - 分別對 few-shot learning, generalized zero-shot learning, domain adaptation 做了實驗
-
-### Abstract
-- We propose a novel visual attribute encoding method that encodes each image as a **low-dimensional probability vector** composed of **prototypical part-type probabilities**. 
-- At **test-time** we **freeze the encoder and only learn/adapt the classifier** component to limited annotated labels in FSL; new semantic attributes in ZSL.
+- Abstract
+    - We propose a novel visual attribute encoding method that encodes each image as a **low-dimensional probability vector** composed of **prototypical part-type probabilities**. 
+    - At **test-time** we **freeze the encoder and only learn/adapt the classifier** component to limited annotated labels in FSL; new semantic attributes in ZSL.
 
 
 ## Semantic Feature Augmentation in Few-shot Learning. ECCV 2018
 
-### [few-shot 知乎](https://zhuanlan.zhihu.com/p/58298920)
-
+- [few-shot 知乎](https://zhuanlan.zhihu.com/p/58298920)
 - motivation：在特征上做数据增广不足以考察类内的变化-->在语义空间上做数据增广。
 - 方法：
     1. 提取类别的语义空间（人工标注的语义属性空间；word2vec得到的语义word空间）
@@ -571,7 +583,7 @@ Awesome Few-shot / Meta Learning Papers
 ## Task Agnostic Meta-Learning for Few-Shot Learning. CVPR 2019
 - [作者導讀 中文](https://zhuanlan.zhihu.com/p/37076777)
     - 直接最大化初始模型在不同类别上的熵（Entropy Maximization）来实现对任务的无偏性
-- optimized-based meta-learning?
+- optimized-based meta-learning
 
 
 ### 想讀
@@ -631,13 +643,16 @@ Awesome Few-shot / Meta Learning Papers
 ## TapNet: Neural Network Augmented with Task-Adaptive Projection for Few-Shot Learning. ICML 2019
 - [code - official (Chainer)](https://github.com/istarjun/TapNet)
 - 不是 domain shift
-- Abstract
-    - Handling previously unseen tasks after given only a few training examples continues to be a tough challenge in machine learning. We propose TapNets, neural networks augmented with task-adaptive projection for improved few-shot learning. Here, employing a meta-learning strategy with **episode-based training**, **a network** and **a set of per-class reference vectors** are learned across widely varying tasks. At the same time, for every episode, **features** in the embedding space are **linearly projected** into a new space as a form of quick **task-specific conditioning**. The training loss is obtained based on a **distance metric between the query and the reference vectors** in the projection space. Excellent generalization results in this way. When tested on the Omniglot, miniImageNet and **tieredImageNet** datasets, we obtain state of the art classification accuracies under **various few-shot scenarios**.
+- episodic training
+- learn a network & a set of per-class reference vectors
+- linearly projected features as task-specific conditioning
+- evaluation dataset: omniglot, miniImagenet, tieredImagenet
+- test under various few-shot scenarios
 
 ## LGM-Net: Learning to Generate Matching Networks for Few-Shot Learning. ICML 2019
 
 - [code - official (TF)](https://github.com/likesiwell/LGM-Net/)
--  **no further tuning** steps are required compared to other meta-learning approaches
+- **no further tuning** steps are required compared to other meta-learning approaches
 
 
 ## Fast Context Adaptation via Meta-Learning. ICML 2019
