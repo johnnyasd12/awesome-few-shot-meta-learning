@@ -1,5 +1,5 @@
 ---
-tags: fewshot learning, awesome few shot learning, papers
+tags: fewshot learning, awesome meta learning, papers
 ---
 
 Awesome Few-shot / Meta Learning Papers
@@ -794,7 +794,7 @@ Awesome Few-shot / Meta Learning Papers
 
 # Datasets
 
-- [TorchMeta (Library)](https://github.com/tristandeleu/pytorch-meta)
+- [TorchMeta (Library)](https://pypi.org/project/torchmeta/), [[GitHub]](https://github.com/tristandeleu/pytorch-meta)
     - omniglot, mini-Imagenet
     - tiered-Imagenet
     - CIFAR-FS
@@ -802,6 +802,13 @@ Awesome Few-shot / Meta Learning Papers
     - Caltech-UCSD Birds (CUBS 200)
     - [Double MNIST (Multi-Digit MNIST)](https://github.com/shaohua0116/MultiDigitMNIST)
     - [Triple MNIST (Multi-Digit MNIST)](https://github.com/shaohua0116/MultiDigitMNIST)
+    - Toy Datasets (Few-Shot Regression)
+        - Sine waves
+            - Model-Agnostic Meta-Learning for Fast Adaptation of Deep Networks. 2017
+        - Harmonic functions
+            - Uncertainty in Multitask Transfer Learning. 2018
+        - Sinusoid & lines
+            - Probabilistic Model-Agnostic Meta-Learning. 2018
 - [Meta-Dataset](https://github.com/google-research/meta-dataset)
 - [Few-Shot Object Detection Dataset](https://github.com/fanq15/Few-Shot-Object-Detection-Dataset)
 - VPE
