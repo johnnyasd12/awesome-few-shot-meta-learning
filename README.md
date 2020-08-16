@@ -7,6 +7,10 @@ Awesome Few-shot / Meta Learning Papers
 
 [![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome) ![](https://camo.githubusercontent.com/b47c798defaffaed99f82859e35ae95ce2486923/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f46657753686f742d73747564792d79656c6c6f77677265656e)
 
+- [GitHub 版本](https://github.com/johnnyasd12/awesome-few-shot-meta-learning/blob/master/README.md)
+- [HackMD 版本](https://hackmd.io/@johnnyasd12/B1puub-a4)
+
+
 # Content
 
 [TOC]
@@ -84,7 +88,7 @@ Awesome Few-shot / Meta Learning Papers
 ## Dense classification and implanting for few-shot learning. CVPR 2019
 
 # Optimization(Initialization)-based Methods
-
+- learning to fine-tune?
 
 ## Model-Agnostic Meta-Learning for Fast Adaptation of Deep Networks. ICML 2017
 ![](https://i.imgur.com/vtN6Wso.png)
@@ -104,6 +108,9 @@ Awesome Few-shot / Meta Learning Papers
 - 改良 MAML (with adaptive learning rate)
 - 新增 inner loop learning rate $\alpha$
 
+## Probabilistic Model-Agnostic Meta-Learning. 2018
+- dataset: Sinusoid & lines
+
 ## How to train your MAML. ICLR 2019
 - MAML++
 - 就是一堆 trick
@@ -117,6 +124,7 @@ Awesome Few-shot / Meta Learning Papers
 - episodic training
 
 # Black Box (Recurrent) -based Methods
+- **learning an optimizer**
 
 ## One-shot generalization in deep generative models. JMLR 2016
 
@@ -133,6 +141,7 @@ Awesome Few-shot / Meta Learning Papers
 
 
 # Hallucination(Data Augmentation) -based Approach
+- learning to **augment**
 
 ## Low-shot learning with large-scale diffusion. CVPR 2018
 - Data method: transform other dataset
@@ -160,10 +169,40 @@ Awesome Few-shot / Meta Learning Papers
 ## Image Deformation Meta-Networks for One-Shot Learning. CVPR 2019
 - [code - official (PyTorch)](https://github.com/tankche1/IDeMe-Net)
 
+## Data augmentation generative adversarial networks. ICLR 2018 Workshop
+
+## Low-shot visual recognition by shrinking and hallucinating features. ICCV 2017
+
+## Low-Shot Learning from Imaginary Data. CVPR 2018
+- directly integrate the generator into a meta-learning algorithm for improving the classification accuracy. - CloserLook
+
+
+
+# Weight Predicting -based Methods
+
+## Dynamic few-shot visual learning without forgetting. CVPR 2018
+
+- SOTA
+- reduce intra-class variance 的重要性
+
+## Low-shot learning with imprinted weights. CVPR 2018
+
 
 
 # Hybrid Methods / ???
 
+## Meta-Learning with Latent Embedding Optimization. ICLR 2019
+![](https://i.imgur.com/g2oJbf2.png)
+- [code - official (TF)](https://github.com/deepmind/leo)
+- SOTA: LEO
+- Hybrid: optimization-based + metric-based (RelationNet)
+- 解決 MAML 不能很好的處理 high dim 的 data，即使 deeper network 也不好
+- 用 (encoder+relation net) 對 data 做 latent code，然後 decode 出 w，再用 w 去算 loss 對 z 做 MAML，(**最後得到的 w' 跟 x 做 內積完 softmax??**
+- OpenReview:
+    - contributions 有二：(1)本來 MAML 是固定 init params，現在他們把他變成低維 latent space。(2)依據 subproblem 的 input data 來決定 init params
+
+
+---
 ## Hypernetworks. ICLR 2017
 
 ## (SNAIL) A Simple Neural Attentive Meta-Learner. ICLR 2018
@@ -184,23 +223,6 @@ Awesome Few-shot / Meta Learning Papers
 
 
 
-## Meta-Learning with Latent Embedding Optimization. ICLR 2019
-![](https://i.imgur.com/g2oJbf2.png)
-- [code - official (TF)](https://github.com/deepmind/leo)
-- SOTA: LEO
-- Hybrid: optimization-based + metric-based (RelationNet)
-- 解決 MAML 不能很好的處理 high dim 的 data，即使 deeper network 也不好
-- 用 (encoder+relation net) 對 data 做 latent code，然後 decode 出 w，再用 w 去算 loss 對 z 做 MAML，(**最後得到的 w' 跟 x 做 內積完 softmax??**
-- OpenReview:
-    - contributions 有二：(1)本來 MAML 是固定 init params，現在他們把他變成低維 latent space。(2)依據 subproblem 的 input data 來決定 init params
-
-
-## Dynamic few-shot visual learning without forgetting. CVPR 2018
-
-- SOTA
-- reduce intra-class variance 的重要性
-
-## Low-Shot Learning from Imaginary Data. CVPR 2018
 
 ## Rapid adaptation with conditionally shifted neurons. ICML 2018
 - SOTA: AdaResNet
@@ -272,12 +294,13 @@ Awesome Few-shot / Meta Learning Papers
 - cross domain train/val/test:
 
 ## Few-Shot Learning as Domain Adaptation: Algorithm and Analysis. ICML 2020
-- [code - official (PyTorch)](https://github.com/JiechaoGuan/FSL-DAPNA)
+- [code - official (PyTorch)【連結失效】](https://github.com/JiechaoGuan/FSL-DAPNA)
 - [中文](https://www.iczhiku.com/hotspotDetail/GB2Qg4g06MgNRvRIfPzA+A==)
 - 可以把 few-shot scenario 的 label shift 看成是一種 domain shift
 - 建構兩個 sub-episode (沒有 class overlap) 來模擬 label(domain) shift
 - 雖然主軸 few-shot 但也有做 cross-domain 實驗
     - cross-domain 似乎完全 follow CloserLook 設定
+    - 可比較
 
 ## Few-Shot Classification on Unseen Domains by Learning Disparate Modulators. arXiv'1909, ~~ICLR 2020~~ rejected
 - 怎麼感覺跟我的 idea 很像
@@ -708,8 +731,6 @@ Awesome Few-shot / Meta Learning Papers
 - CAVIA partitions the model parameters into two parts: **context parameters** that serve as **additional input** to the model and are **adapted on individual tasks**, and **shared parameters** that are meta-trained and **shared across tasks**. At **test time, only the context parameters are updated**, leading to a low-dimensional task representation. 
 
 
-
-## Low-shot learning with imprinted weights. CVPR 2018
 
 # ICCV 2019
 
