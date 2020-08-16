@@ -127,6 +127,7 @@ Awesome Few-shot / Meta Learning Papers
 - **learning an optimizer**
 
 ## One-shot generalization in deep generative models. JMLR 2016
+- recurrent-based [Cross Domain Few-Shot Classification via Learned Feature-Wise Transformation Layer]
 
 ## Meta-learning with memory-augmented neural networks. ICML 2016
 - **最早用 external memory 解 FSL classification** 的
@@ -135,7 +136,7 @@ Awesome Few-shot / Meta Learning Papers
     - When new data is encountered, the **conventional models must inefficiently relearn their parameters** to adequately incorporate the new information without catastrophic interference.
 - We also introduce a **new method for accessing an external memory that focuses on memory content**, unlike previous methods that additionally use memory location-based focusing mechanisms.
 
-## Optimization as a model for fewshot learning. ICLR 2017
+## Optimization as a model for few-shot learning. ICLR 2017
 - LSTM-based meta learning
 - 可是 CloserLook 說它是 initialization-based???
 
@@ -143,10 +144,6 @@ Awesome Few-shot / Meta Learning Papers
 # Hallucination(Data Augmentation) -based Approach
 - learning to **augment**
 
-## Low-shot learning with large-scale diffusion. CVPR 2018
-- Data method: transform other dataset
-- semi-supervised?
-- [code - official (PyTorch, Intel MKL, faiss)](https://github.com/facebookresearch/low-shot-with-diffusion)
 
 
 ## Delta-encoder: an effective sample synthesis method for few-shot object recognition. NIPS 2018
@@ -469,6 +466,12 @@ Awesome Few-shot / Meta Learning Papers
 
 
 # Semi-supervised
+
+## Low-shot learning with large-scale diffusion. CVPR 2018
+- Data method: transform other dataset???
+- semi-supervised setting to support **label propagation**
+- [code - official (PyTorch, Intel MKL, faiss)](https://github.com/facebookresearch/low-shot-with-diffusion)
+
 
 ## Meta-Learning for Semi-Supervised Few-Shot Classification. ICLR 2018
 - [code - official (TF)](https://github.com/renmengye/few-shot-ssl-public)
