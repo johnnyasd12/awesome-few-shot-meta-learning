@@ -85,6 +85,9 @@ Awesome Few-shot / Meta Learning Papers
 - 將 support set 和 query 的 embedding 做 concat，然後用 NN 計算相似程度。
 - 同樣的 architecture **也可以用來做 ZSL**，只要把 support set 換成 class semantic vector 即可
 
+## Variational few-shot learning. ICCV 2019
+- metric-based [by DAPNA]
+
 ## Dense classification and implanting for few-shot learning. CVPR 2019
 
 # Optimization(Initialization)-based Methods
@@ -111,6 +114,9 @@ Awesome Few-shot / Meta Learning Papers
 ## Probabilistic Model-Agnostic Meta-Learning. 2018
 - dataset: Sinusoid & lines
 
+## Gradient-based meta-learning with learned layerwise metric and subspace. ICML 2018
+- RNN-based [by DAPNA]
+
 ## How to train your MAML. ICLR 2019
 - MAML++
 - 就是一堆 trick
@@ -131,14 +137,32 @@ Awesome Few-shot / Meta Learning Papers
 
 ## Meta-learning with memory-augmented neural networks. ICML 2016
 - **最早用 external memory 解 FSL classification** 的
+- 別名：One-shot Learning with Memory-Augmented Neural Networks. arXiv'16
+- 这篇论文解释了单样本学习与元学习的关系
 - [my paper note](https://hackmd.io/OuVnw8WuT7OAuttmNtFtvg)
 - Architectures with **augmented memory** capacities, such as Neural Turing Machines (NTMs), offer the ability to **quickly encode and retrieve new information**, and hence can potentially obviate the *downsides of conventional models*.
     - When new data is encountered, the **conventional models must inefficiently relearn their parameters** to adequately incorporate the new information without catastrophic interference.
 - We also introduce a **new method for accessing an external memory that focuses on memory content**, unlike previous methods that additionally use memory location-based focusing mechanisms.
 
 ## Optimization as a model for few-shot learning. ICLR 2017
-- LSTM-based meta learning
+- LSTM-based meta learning [by authors]
 - 可是 CloserLook 說它是 initialization-based???
+
+## (SNAIL) A Simple Neural Attentive Meta-Learner. ICLR 2018
+- episodic training
+- RNN-based approach [by DAPNA(Few-Shot Learning as Domain Adaptation)]
+- [code (PyTorch)](https://github.com/eambutu/snail-pytorch)
+- [code (PyTorch) - 2](https://github.com/sagelywizard/snail)
+- [code (MXNet? Gluon)](https://github.com/seujung/SNAIL-gluon)
+- [my paper note (unfinished)](https://hackmd.io/rYWjR821QpWFjWPdqZzCqw)
+
+## Meta Networks. ICML 2017
+- RNN-based approach [by DAPNA]
+
+## Rapid adaptation with conditionally shifted neurons. ICML 2018
+- SOTA: AdaResNet
+- RNN-based [by DAPNA]
+
 
 
 # Hallucination(Data Augmentation) -based Approach
@@ -202,18 +226,6 @@ Awesome Few-shot / Meta Learning Papers
 ---
 ## Hypernetworks. ICLR 2017
 
-## (SNAIL) A Simple Neural Attentive Meta-Learner. ICLR 2018
-- episodic training
-- [code (PyTorch)](https://github.com/eambutu/snail-pytorch)
-- [code (PyTorch) - 2](https://github.com/sagelywizard/snail)
-- [code (MXNet? Gluon)](https://github.com/seujung/SNAIL-gluon)
-- [my paper note (unfinished)](https://hackmd.io/rYWjR821QpWFjWPdqZzCqw)
-
-
-## One-shot Learning with Memory-Augmented Neural Networks. arXiv'16
-- 这篇论文解释了单样本学习与元学习的关系
-
-
 
 ## Few-shot image recognition by predicting parameters from activations. CVPR 2018
 
@@ -221,8 +233,6 @@ Awesome Few-shot / Meta Learning Papers
 
 
 
-## Rapid adaptation with conditionally shifted neurons. ICML 2018
-- SOTA: AdaResNet
 
 ## Meta-Learning with Differentiable Convex Optimization. CVPR 2019 (Oral)
 
@@ -298,6 +308,7 @@ Awesome Few-shot / Meta Learning Papers
 - 雖然主軸 few-shot 但也有做 cross-domain 實驗
     - cross-domain 似乎完全 follow CloserLook 設定
     - 可比較
+- SOTA: DAPNA
 
 ## Few-Shot Classification on Unseen Domains by Learning Disparate Modulators. arXiv'1909, ~~ICLR 2020~~ rejected
 - 怎麼感覺跟我的 idea 很像
