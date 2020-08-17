@@ -2,10 +2,13 @@
 tags: fewshot learning, awesome meta learning, papers
 ---
 
-Awesome Few-shot / Meta Learning Papers
+Awesome Few-Shot / Meta Learning Papers
 ===
 
-[![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome) ![](https://camo.githubusercontent.com/b47c798defaffaed99f82859e35ae95ce2486923/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f46657753686f742d73747564792d79656c6c6f77677265656e)
+
+
+
+[![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome) ![](https://camo.githubusercontent.com/b47c798defaffaed99f82859e35ae95ce2486923/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f46657753686f742d73747564792d79656c6c6f77677265656e) [![hackmd-github-sync-badge](https://hackmd.io/2e6l5BmYS2ebhE__dwOcgQ/badge)](https://hackmd.io/2e6l5BmYS2ebhE__dwOcgQ)
 
 - [GitHub 版本](https://github.com/johnnyasd12/awesome-few-shot-meta-learning/blob/master/README.md)
 - [HackMD 版本](https://hackmd.io/@johnnyasd12/B1puub-a4)
@@ -87,8 +90,10 @@ Awesome Few-shot / Meta Learning Papers
 
 ## Variational few-shot learning. ICCV 2019
 - metric-based [by DAPNA]
+- metric learning via variational inference
 
 ## Dense classification and implanting for few-shot learning. CVPR 2019
+- metric-based [by CDFS]
 
 # Optimization(Initialization)-based Methods
 - learning to fine-tune?
@@ -115,7 +120,7 @@ Awesome Few-shot / Meta Learning Papers
 - dataset: Sinusoid & lines
 
 ## Gradient-based meta-learning with learned layerwise metric and subspace. ICML 2018
-- RNN-based [by DAPNA]
+- initialization-based [by DAPNA]
 
 ## How to train your MAML. ICLR 2019
 - MAML++
@@ -128,6 +133,18 @@ Awesome Few-shot / Meta Learning Papers
 
 ## Reptile: A Scalable Meta-Learning Algorithm. 2018
 - episodic training
+
+## Meta-Learning with Latent Embedding Optimization. ICLR 2019
+![](https://i.imgur.com/g2oJbf2.png)
+- [code - official (TF)](https://github.com/deepmind/leo)
+- SOTA: LEO
+- optimization-based [by CDFS]
+- Hybrid: optimization-based + metric-based (RelationNet)
+- 解決 MAML 不能很好的處理 high dim 的 data，即使 deeper network 也不好
+- 用 (encoder+relation net) 對 data 做 latent code，然後 decode 出 w，再用 w 去算 loss 對 z 做 MAML，(**最後得到的 w' 跟 x 做 內積完 softmax??**
+- OpenReview:
+    - contributions 有二：(1)本來 MAML 是固定 init params，現在他們把他變成低維 latent space。(2)依據 subproblem 的 input data 來決定 init params
+
 
 # Black Box (Recurrent) -based Methods
 - **learning an optimizer**
@@ -211,17 +228,6 @@ Awesome Few-shot / Meta Learning Papers
 
 
 # Hybrid Methods / ???
-
-## Meta-Learning with Latent Embedding Optimization. ICLR 2019
-![](https://i.imgur.com/g2oJbf2.png)
-- [code - official (TF)](https://github.com/deepmind/leo)
-- SOTA: LEO
-- Hybrid: optimization-based + metric-based (RelationNet)
-- 解決 MAML 不能很好的處理 high dim 的 data，即使 deeper network 也不好
-- 用 (encoder+relation net) 對 data 做 latent code，然後 decode 出 w，再用 w 去算 loss 對 z 做 MAML，(**最後得到的 w' 跟 x 做 內積完 softmax??**
-- OpenReview:
-    - contributions 有二：(1)本來 MAML 是固定 init params，現在他們把他變成低維 latent space。(2)依據 subproblem 的 input data 來決定 init params
-
 
 ---
 ## Hypernetworks. ICLR 2017
@@ -810,7 +816,8 @@ Awesome Few-shot / Meta Learning Papers
 
 ---
 
-# Few-shot with Graph Neural Networks
+## Few-shot with Graph Neural Networks. ICLR 2018
+- metric-based? [by CDFS]
 
 ## Edge-Labeling Graph Neural Network for Few-shot Learning. arXiv'1905
 
