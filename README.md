@@ -88,6 +88,18 @@ Awesome Few-Shot / Meta Learning Papers
 - 將 support set 和 query 的 embedding 做 concat，然後用 NN 計算相似程度。
 - 同樣的 architecture **也可以用來做 ZSL**，只要把 support set 換成 class semantic vector 即可
 
+
+## Few-shot Learning with Graph Neural Networks. ICLR 2018
+- metric-based [by CDFS&CloserLook]
+- GNN as metric function
+
+
+## Meta-learning with differentiable closed-form solvers. ICLR 2019
+- ridge regression
+- R2-D2
+- metric-based [by CloserLook]
+- 提出 dataset: CIFAR-FS
+
 ## Variational few-shot learning. ICCV 2019
 - metric-based [by DAPNA]
 - metric learning via variational inference
@@ -95,8 +107,20 @@ Awesome Few-Shot / Meta Learning Papers
 ## Dense classification and implanting for few-shot learning. CVPR 2019
 - metric-based [by CDFS]
 
+## Subspace Networks for Few-shot Classification. arXiv'1905.13613
+
+![](https://i.imgur.com/CyAqlrn.png)
+- follow "A Closer Look at Few-shot Classification" 的設定
+- 根據 embedded query point 到每個 class **subspace 的距離**來 classify example
+
+## RepMet: Representative-based metric learning for classification and few-shot object detection. CVPR 2019
+- metric-based [by 2020survey]
+
+
+
 # Optimization(Initialization)-based Methods
 - learning to fine-tune?
+- aim to learn a great initial parameter condition of base feature extractor, and then fine-tune the network to the unseen classes using just several examples within a few gradient steps. [by DAPNA]
 
 ## Model-Agnostic Meta-Learning for Fast Adaptation of Deep Networks. ICML 2017
 ![](https://i.imgur.com/vtN6Wso.png)
@@ -132,7 +156,7 @@ Awesome Few-Shot / Meta Learning Papers
 - 二作 Chelsea Finn 大神
 
 ## Reptile: A Scalable Meta-Learning Algorithm. 2018
-- episodic training
+
 
 ## Meta-Learning with Latent Embedding Optimization. ICLR 2019
 ![](https://i.imgur.com/g2oJbf2.png)
@@ -148,9 +172,10 @@ Awesome Few-Shot / Meta Learning Papers
 
 # Black Box (Recurrent) -based Methods
 - **learning an optimizer**
+- equipped with an external or internal memory storage to store the transferable knowledge. [by DAPNA]
 
 ## One-shot generalization in deep generative models. JMLR 2016
-- recurrent-based [Cross Domain Few-Shot Classification via Learned Feature-Wise Transformation Layer]
+- recurrent-based [by CDFS]
 
 ## Meta-learning with memory-augmented neural networks. ICML 2016
 - **最早用 external memory 解 FSL classification** 的
@@ -163,27 +188,58 @@ Awesome Few-Shot / Meta Learning Papers
 
 ## Optimization as a model for few-shot learning. ICLR 2017
 - LSTM-based meta learning [by authors]
-- 可是 CloserLook 說它是 initialization-based???
+- include the LSTM-based meta-learner for replacing the stochastic gradient decent optimizer. [by CloserLook]
 
-## (SNAIL) A Simple Neural Attentive Meta-Learner. ICLR 2018
+## A Simple Neural Attentive Meta-Learner. ICLR 2018
 - episodic training
 - RNN-based approach [by DAPNA(Few-Shot Learning as Domain Adaptation)]
 - [code (PyTorch)](https://github.com/eambutu/snail-pytorch)
 - [code (PyTorch) - 2](https://github.com/sagelywizard/snail)
 - [code (MXNet? Gluon)](https://github.com/seujung/SNAIL-gluon)
 - [my paper note (unfinished)](https://hackmd.io/rYWjR821QpWFjWPdqZzCqw)
+- SOTA: SNAIL
+
 
 ## Meta Networks. ICML 2017
 - RNN-based approach [by DAPNA]
+
+## Memory Matching Networks for One-Shot Image Recognition. CVPR 2018
 
 ## Rapid adaptation with conditionally shifted neurons. ICML 2018
 - SOTA: AdaResNet
 - RNN-based [by DAPNA]
 
+## Adaptive Posterior Learning: few-shot learning with a surprise-based memory module. ICLR 2018
+- [中文](https://zhuanlan.zhihu.com/p/67388319)
+- [code - official (PyTorch)](https://github.com/cogentlabs/apl)
+- 只在一些 $(x^{(i)}, y^{(i)})$ 的 prediction loss 高於 threshold 時去更新 memory。因此相較於 differentiable memory(**_???_**)，計算成本降低了
+- approximates probability distributions by **remembering the most surprising observations**
+- algorithm can perform as well as state of the art baselines
+- main contributions:
+    - surprise-based signal to write items to memory, **not needing to learn what to write**. So easier and faster to train, and minimizes how much data stored
+    - ***(不懂???) An integrated external and working memory architecture which can take advantage of the best of both worlds: scalability and sparse access provided by the working memory; and all-to-all attention and reasoning provided by a relational reasoning module.***
+    - A training setup which steers the system towards learning an algorithm which **approximates the posterior without backpropagating through the whole sequence of data in an episode**.
+- Conclusion
+    - We introduced a self-contained system which can **learn to approximate a probability distribution with as little data and as quickly as it can**. This is achieved by:
+        - putting together the training setup which encourages adaptation
+        - an external memory which allows the system to recall past events
+        - a writing system to adapt the memory to uncertain situations
+        - a working memory architecture which can efficiently compare items retrieved from memory to produce new predictions
+    - We showed that the model can
+        - Reach **state of the art accuracy with a smaller memory footprint** than other meta-learning models by efficiently choosing which data points to remember.
+        - **Scale to very large problem sizes** thanks to the use of an external memory module **with sparse access**.
+        - ***(不懂???) Perform fewer than 1-shot generalization thanks to relational reasoning across neighbors.***
+
+
 
 
 # Hallucination(Data Augmentation) -based Approach
 - learning to **augment**
+
+## Low-shot visual recognition by shrinking and hallucinating features. ICCV 2017
+
+## Low-Shot Learning from Imaginary Data. CVPR 2018
+- directly integrate the generator into a meta-learning algorithm for improving the classification accuracy. [by CloserLook]
 
 
 
@@ -208,11 +264,6 @@ Awesome Few-Shot / Meta Learning Papers
 - [code - official (PyTorch)](https://github.com/tankche1/IDeMe-Net)
 
 ## Data augmentation generative adversarial networks. ICLR 2018 Workshop
-
-## Low-shot visual recognition by shrinking and hallucinating features. ICCV 2017
-
-## Low-Shot Learning from Imaginary Data. CVPR 2018
-- directly integrate the generator into a meta-learning algorithm for improving the classification accuracy. - CloserLook
 
 
 
@@ -247,11 +298,6 @@ Awesome Few-Shot / Meta Learning Papers
 - [few-shot 知乎](https://zhuanlan.zhihu.com/p/58298920)
 - motivation：将最近邻分类器换做SVM，提高分类器的判别能力。
 - 方法：提取所有图像的特征，利用SVM得到所有分类器的参数w （对偶的SVM）对测试图像进行分类，优化特征提取器参数
-
-## Meta-learning with differentiable closed-form solvers. ICLR 2019
-- ridge regression
-- R2-D2
-- 提出 dataset: CIFAR-FS
 
 
 ## Cross Attention Network for Few-shot Classification. NeurIPS 2019
@@ -443,12 +489,6 @@ Awesome Few-Shot / Meta Learning Papers
     3. we are the first to investigate **few-shot deep learning methods in the text domains**.
 
 
-## Subspace Networks for Few-shot Classification. arXiv'1905.13613
-
-![](https://i.imgur.com/CyAqlrn.png)
-- follow "A Closer Look at Few-shot Classification" 的設定
-- 根據 embedded query point 到每個 class **subspace 的距離**來 classify example
-
 
 # Understanding few-shot learning
 
@@ -550,10 +590,26 @@ Awesome Few-Shot / Meta Learning Papers
 - the experiments compare the results only between this multimodal approach and visual approaches. I believe using the Glove embeddings alone (no visual input) could give very good results on their own, and it is thus crucial for the authors to compare with this scenario too.
 - the explanation for why you chose this form for lambda_c is unclear: "A very structured semantic space is a good choice for conditioning." 
 
-## TAFE-Net: Task-Aware Feature Embeddings for Low Shot Learning. 2019
+## Semantic Feature Augmentation in Few-shot Learning. ECCV 2018
+
+- [few-shot 知乎](https://zhuanlan.zhihu.com/p/58298920)
+- motivation：在特征上做数据增广不足以考察类内的变化-->在语义空间上做数据增广。
+- 方法：
+    1. 提取类别的语义空间（人工标注的语义属性空间；word2vec得到的语义word空间）
+    2. 联合训练一个特征提取器和视觉特征空间到语义空间的映射。
+    3. 对于测试的训练图像，将其映射到语义空间，在语义空间做数据增广（加入高斯噪声或者映射到相应的相似的类别），再映射到语义空间，得到增广后的特征。
+    4. 将增广的特征和原有的特征联合训练一个分类器。
+
+
+
+## Few-Shot Learning with Global Class Representations. ICCV 2019
+- utilize semantic information [by DAPNA]
 
 
 # others
+
+## TAFE-Net: Task-Aware Feature Embeddings for Low Shot Learning. 2019
+- metric-based [by 2020survey]
 
 ## Incremental Few-Shot Learning with Attention Attractor Networks. NIPS 2019
 
@@ -583,7 +639,6 @@ Awesome Few-Shot / Meta Learning Papers
 
 ## Meta-learning autoencoders for few-shot prediction. arXiv'1807 (MIT)
 
-## Memory Matching Networks for One-Shot Image Recognition. CVPR 2018
 
 ## Learning Classifiers for Target Domain with Limited or No Labels. ICML 2019
 - 好像不是做 domain shift 的 @@
@@ -593,42 +648,10 @@ Awesome Few-Shot / Meta Learning Papers
     - At **test-time** we **freeze the encoder and only learn/adapt the classifier** component to limited annotated labels in FSL; new semantic attributes in ZSL.
 
 
-## Semantic Feature Augmentation in Few-shot Learning. ECCV 2018
-
-- [few-shot 知乎](https://zhuanlan.zhihu.com/p/58298920)
-- motivation：在特征上做数据增广不足以考察类内的变化-->在语义空间上做数据增广。
-- 方法：
-    1. 提取类别的语义空间（人工标注的语义属性空间；word2vec得到的语义word空间）
-    2. 联合训练一个特征提取器和视觉特征空间到语义空间的映射。
-    3. 对于测试的训练图像，将其映射到语义空间，在语义空间做数据增广（加入高斯噪声或者映射到相应的相似的类别），再映射到语义空间，得到增广后的特征。
-    4. 将增广的特征和原有的特征联合训练一个分类器。
-
 
 ## Meta-Learning Probabilistic Inference for Prediction. ICLR 2019
 - [code - official (TF)](https://github.com/Gordonjo/versa)
 
-
-
-## Adaptive Posterior Learning: few-shot learning with a surprise-based memory module. ICLR 2019
-- [中文](https://zhuanlan.zhihu.com/p/67388319)
-- [code - official (PyTorch)](https://github.com/cogentlabs/apl)
-- 只在一些 $(x^{(i)}, y^{(i)})$ 的 prediction loss 高於 threshold 時去更新 memory。因此相較於 differentiable memory(**_???_**)，計算成本降低了
-- approximates probability distributions by **remembering the most surprising observations**
-- algorithm can perform as well as state of the art baselines
-- main contributions:
-    - surprise-based signal to write items to memory, **not needing to learn what to write**. So easier and faster to train, and minimizes how much data stored
-    - ***(不懂???) An integrated external and working memory architecture which can take advantage of the best of both worlds: scalability and sparse access provided by the working memory; and all-to-all attention and reasoning provided by a relational reasoning module.***
-    - A training setup which steers the system towards learning an algorithm which **approximates the posterior without backpropagating through the whole sequence of data in an episode**.
-- Conclusion
-    - We introduced a self-contained system which can **learn to approximate a probability distribution with as little data and as quickly as it can**. This is achieved by:
-        - putting together the training setup which encourages adaptation
-        - an external memory which allows the system to recall past events
-        - a writing system to adapt the memory to uncertain situations
-        - a working memory architecture which can efficiently compare items retrieved from memory to produce new predictions
-    - We showed that the model can
-        - Reach **state of the art accuracy with a smaller memory footprint** than other meta-learning models by efficiently choosing which data points to remember.
-        - **Scale to very large problem sizes** thanks to the use of an external memory module **with sparse access**.
-        - ***(不懂???) Perform fewer than 1-shot generalization thanks to relational reasoning across neighbors.***
 
 
 
@@ -704,12 +727,9 @@ Awesome Few-Shot / Meta Learning Papers
 
 
 
-## RepMet: Representative-based metric learning for classification and few-shot object detection. CVPR 2019
-
-
 ## Few-Shot Learning with Localization in Realistic Settings. CVPR 2019
 
-## Few Shot Adaptive Faster R-CNN. CVPR 2019    
+## Few Shot Adaptive Faster R-CNN. CVPR 2019
 
 
 ## SPNet: Semantic Projection Network for Zero-Label and Few-Label Semantic Segmentation. CVPR 2019
@@ -757,8 +777,6 @@ Awesome Few-Shot / Meta Learning Papers
 ## Deep Meta Metric Learning. ICCV 2019
 
 - [code - official (PyTorch)](https://github.com/CHENGY12/DMML)
-
-## Few-Shot Learning with Global Class Representations. ICCV 2019
 
 ## Bidirectional One-Shot Unsupervised Domain Mapping. ICCV 2019
 
@@ -815,10 +833,6 @@ Awesome Few-Shot / Meta Learning Papers
 
 
 ---
-
-## Few-shot with Graph Neural Networks. ICLR 2018
-- metric-based? [by CDFS]
-
 ## Edge-Labeling Graph Neural Network for Few-shot Learning. arXiv'1905
 
 
@@ -865,6 +879,15 @@ Awesome Few-Shot / Meta Learning Papers
 
 ## CANet: Class-Agnostic Segmentation Networks with Iterative Refinement and Attentive Few-Shot Learning. arXiv'1903
 
+# 2020 papers
+
+## Memory-Augmented Relation Network for Few-Shot Learning. arXiv'2005
+
+## Augmented Bi-path Network for Few-shot Learning. arXiv'2007
+
+## Learning from Few Samples: A Survey. arXiv'2007
+
+## Few-shot Learning with Multi-scale Self-supervision. arXiv'2001
 
 # Awesome Authors
 - [Han-Jia Ye](https://scholar.google.com/citations?hl=zh-TW&user=mgOYhtoAAAAJ&view_op=list_works&sortby=pubdate)
