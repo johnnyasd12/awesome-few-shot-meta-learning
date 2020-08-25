@@ -116,6 +116,10 @@ Awesome Few-Shot / Meta Learning Papers
 ## RepMet: Representative-based metric learning for classification and few-shot object detection. CVPR 2019
 - metric-based [by 2020survey]
 
+## Infinite Mixture Prototypes for Few-shot Learning. ICML 2019 Oral
+- Our infinite mixture prototypes **represent each class by a set of clusters**, unlike existing prototypical methods that represent each class by a single cluster. 
+- **semi-supervised and unsupervised** setting
+
 
 
 # Optimization(Initialization)-based Methods
@@ -169,6 +173,7 @@ Awesome Few-Shot / Meta Learning Papers
 - OpenReview:
     - contributions 有二：(1)本來 MAML 是固定 init params，現在他們把他變成低維 latent space。(2)依據 subproblem 的 input data 來決定 init params
 
+## Learning to Stop While Learning to Predict. ICML 2020
 
 # Black Box (Recurrent) -based Methods
 - **learning an optimizer**
@@ -269,6 +274,9 @@ Awesome Few-Shot / Meta Learning Papers
 
 # Weight Predicting -based Methods
 
+## Hypernetworks. ICLR 2017
+- generate weight approach (i think)
+
 ## Dynamic few-shot visual learning without forgetting. CVPR 2018
 
 - SOTA
@@ -277,18 +285,18 @@ Awesome Few-Shot / Meta Learning Papers
 ## Low-shot learning with imprinted weights. CVPR 2018
 
 
+## Few-shot image recognition by predicting parameters from activations. CVPR 2018
+- generate weight approach (i think)
+
+
+## LGM-Net: Learning to Generate Matching Networks for Few-Shot Learning. ICML 2019
+
+- [code - official (TF)](https://github.com/likesiwell/LGM-Net/)
+- **no further tuning** steps are required compared to other meta-learning approaches
+
+
 
 # Hybrid Methods / ???
-
----
-## Hypernetworks. ICLR 2017
-
-
-## Few-shot image recognition by predicting parameters from activations. CVPR 2018
-
-
-
-
 
 
 ## Meta-Learning with Differentiable Convex Optimization. CVPR 2019 (Oral)
@@ -470,11 +478,10 @@ Awesome Few-Shot / Meta Learning Papers
 - domain 差異大的情況下(例如miniImageNet)，隨著 baseNN 越強，不同 SOTA 方法的差異越大
 - 有領域飄移情況發生時，SOTA 方法甚至沒有 baseline 表現好
 - 特別強調 SOTA 在 domain adaptation 做得不好
-
-### Reviewer Comment
-- The conclusion from the network depth experiments is that “**gaps among different methods diminish as the backbone gets deeper**”. However, in a **5-shot mini-ImageNet case, this is not what the plot shows**. Quite the opposite: the **gap increased**. Did I misunderstand something? Could you please comment on that?
-    - **跟我想問的問題一樣**
-    - Authors' Answer: Sorry for the confusion. As addressed in 4.3, gaps among different methods diminish as the backbone gets deeper *in the CUB dataset*. In the mini-ImageNet dataset, the results are more complicated due to the domain difference. We further discuss this phenomenon in Section 4.4 and 4.5. We have clarified related texts in the revised paper. 
+- Reviewers' Comment
+    - The conclusion from the network depth experiments is that “**gaps among different methods diminish as the backbone gets deeper**”. However, in a **5-shot mini-ImageNet case, this is not what the plot shows**. Quite the opposite: the **gap increased**. Did I misunderstand something? Could you please comment on that?
+        - **跟我想問的問題一樣**
+        - Authors' Answer: Sorry for the confusion. As addressed in 4.3, gaps among different methods diminish as the backbone gets deeper *in the CUB dataset*. In the mini-ImageNet dataset, the results are more complicated due to the domain difference. We further discuss this phenomenon in Section 4.4 and 4.5. We have clarified related texts in the revised paper. 
 
 ## Few-shot Learning with Meta Metric Learners. NIPS 2017 workshop on Meta-Learning, arXiv'1901.09890
 - Microsoft AI & Research, IBM Research AI, JD AI Research
@@ -575,8 +582,6 @@ Awesome Few-Shot / Meta Learning Papers
 - [code - official (PyTorch)](https://github.com/edgarschnfld/CADA-VAE-PyTorch)
 - [Chinese1](https://travelleralone.github.io/2019-05-31/GZSLVAE/)
 - [Chinese2](https://blog.csdn.net/cp_oldy/article/details/90751877)
-
-### Abstract
 -  In this work, we take feature generation one step further and propose a model where a shared latent space of image features and class embeddings is learned by modality-specific aligned variational autoencoders. 
 
 
@@ -584,11 +589,10 @@ Awesome Few-Shot / Meta Learning Papers
 - 這篇跟我本來想到的 idea 一樣，居然有人做過了，機車
 - 不過也許還沒做 domain shift?
 - 對，他沒做 domain shift 哈哈哈哈
-
-### Reviewer Comment
-- this paper is **not really doing few-shot learning**, because according to section 3.2. and the experiments, the authors use the test labels in order to know which word embeddings to assign to each sample: "[...] containing label embeddings of all categories in D_train ∪ D_test". In other words, the authors use the labels (which are the goal of the classification task) to find the match between the two input modalities (to know what Glove vector to assign to each image).
-- the experiments compare the results only between this multimodal approach and visual approaches. I believe using the Glove embeddings alone (no visual input) could give very good results on their own, and it is thus crucial for the authors to compare with this scenario too.
-- the explanation for why you chose this form for lambda_c is unclear: "A very structured semantic space is a good choice for conditioning." 
+- Reviewer Comment
+    - this paper is **not really doing few-shot learning**, because according to section 3.2. and the experiments, the authors use the test labels in order to know which word embeddings to assign to each sample: "[...] containing label embeddings of all categories in D_train ∪ D_test". In other words, the authors use the labels (which are the goal of the classification task) to find the match between the two input modalities (to know what Glove vector to assign to each image).
+    - the experiments compare the results only between this multimodal approach and visual approaches. I believe using the Glove embeddings alone (no visual input) could give very good results on their own, and it is thus crucial for the authors to compare with this scenario too.
+    - the explanation for why you chose this form for lambda_c is unclear: "A very structured semantic space is a good choice for conditioning." 
 
 ## Semantic Feature Augmentation in Few-shot Learning. ECCV 2018
 
@@ -744,10 +748,6 @@ Awesome Few-Shot / Meta Learning Papers
 
 # ICML 2019
 
-## Infinite Mixture Prototypes for Few-shot Learning. ICML 2019 Oral
-### Abstract
-- Our infinite mixture prototypes **represent each class by a set of clusters**, unlike existing prototypical methods that represent each class by a single cluster. 
-- **semi-supervised and unsupervised** setting
 
 
 ## TapNet: Neural Network Augmented with Task-Adaptive Projection for Few-Shot Learning. ICML 2019
@@ -758,11 +758,6 @@ Awesome Few-Shot / Meta Learning Papers
 - linearly projected features as task-specific conditioning
 - evaluation dataset: omniglot, miniImagenet, tieredImagenet
 - test under various few-shot scenarios
-
-## LGM-Net: Learning to Generate Matching Networks for Few-Shot Learning. ICML 2019
-
-- [code - official (TF)](https://github.com/likesiwell/LGM-Net/)
-- **no further tuning** steps are required compared to other meta-learning approaches
 
 
 ## Fast Context Adaptation via Meta-Learning. ICML 2019
@@ -863,8 +858,6 @@ Awesome Few-Shot / Meta Learning Papers
 ## Probable Guarantees for Gradient-Based Meta-Learning. ICML 2019
 
 ## Meta-Learning Neural Bloom Filters. ICML 2019
-
-### Abstract
 - We propose a novel **memory** architecture, the **Neural Bloom Filter**, which is able to achieve significant **compression gains** over classical Bloom Filters and existing memory-augmented neural networks
 
 ## Hierarchically Structured Meta-learning. ICML 2019
