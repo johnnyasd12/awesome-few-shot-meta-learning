@@ -10,8 +10,7 @@ Awesome Few-Shot / Meta Learning Papers
 
 [![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome) ![](https://camo.githubusercontent.com/b47c798defaffaed99f82859e35ae95ce2486923/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f46657753686f742d73747564792d79656c6c6f77677265656e) [![hackmd-github-sync-badge](https://hackmd.io/2e6l5BmYS2ebhE__dwOcgQ/badge)](https://hackmd.io/2e6l5BmYS2ebhE__dwOcgQ)
 
-- [GitHub 版本](https://github.com/johnnyasd12/awesome-few-shot-meta-learning/blob/master/README.md)
-- [HackMD 版本](https://hackmd.io/@johnnyasd12/B1puub-a4)
+- 蒐集了一些相關 paper，紀錄於 [HackMD](https://hackmd.io/@johnnyasd12/B1puub-a4)，同步更新於 [GitHub](https://github.com/johnnyasd12/awesome-few-shot-meta-learning/blob/master/README.md)
 
 
 # Content
